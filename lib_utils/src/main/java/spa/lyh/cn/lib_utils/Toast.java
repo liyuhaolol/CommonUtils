@@ -1,4 +1,4 @@
-package spa.lyh.cn.lib_utils.toast;
+package spa.lyh.cn.lib_utils;
 
 import android.content.Context;
 import android.content.res.Resources;

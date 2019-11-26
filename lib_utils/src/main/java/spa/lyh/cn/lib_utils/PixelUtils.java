@@ -1,4 +1,4 @@
-package spa.lyh.cn.lib_utils.screen;
+package spa.lyh.cn.lib_utils;
 
 import android.app.Activity;
 import android.content.Context;
