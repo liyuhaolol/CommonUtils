@@ -28,7 +28,7 @@ public class AndroidMHelper implements ILightModeHelper {
 
             return true;
         }
-        Log.w("LightModeException","Failed to match Android 6.0");
+        Log.w("LightModeException","Failed to match above Android 6.0");
         return false;
     }
 }

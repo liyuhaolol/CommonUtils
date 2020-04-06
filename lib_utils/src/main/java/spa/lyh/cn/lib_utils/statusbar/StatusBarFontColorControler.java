@@ -3,6 +3,7 @@ package spa.lyh.cn.lib_utils.statusbar;
 import android.app.Activity;
 
 import spa.lyh.cn.lib_utils.statusbar.lightmode.AndroidMHelper;
+import spa.lyh.cn.lib_utils.statusbar.lightmode.ColorOSHelper;
 import spa.lyh.cn.lib_utils.statusbar.lightmode.FlymeHelper;
 import spa.lyh.cn.lib_utils.statusbar.lightmode.MIUIHelper;
 
@@ -20,6 +21,8 @@ public class StatusBarFontColorControler {
         if (new MIUIHelper().setLightMode(activity, isLightMode)) {
             flag = true;
         }else if (new FlymeHelper().setLightMode(activity, isLightMode)) {
+            flag = true;
+        }else if (new ColorOSHelper().setLightMode(activity, isLightMode)) {
             flag = true;
         }else if (new AndroidMHelper().setLightMode(activity, isLightMode)) {
             flag = true;
