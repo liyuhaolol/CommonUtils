@@ -284,7 +284,7 @@ String getGapTime(long time)
 
 ## View的一些封装类
 
-- AutoScrollView
+- AutoScrollView <br/>
 extends ScrollView 用来解决ScrollView嵌套RecyclerView时，在Android5.0以上设备丢失滑动惯性问题
 
 - EmptyItemAnimator 用来去除recyclerview刷新时闪烁的动画
