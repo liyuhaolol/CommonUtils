@@ -203,3 +203,88 @@ int getStatusBarHeight(Context context)
 */
 int getNavigationBarHeight(Context context)
 ```
+
+## TextDetailUtils
+
+#### 得到TextView一行最多显示多少个字
+
+- getLineMaxNumber();
+
+```java
+/**
+* 最低运行版本是Andriod6.0
+* @param text 文本内容
+* @param paint 要判断的textview的textpaint类
+* @param maxWidth textview所能达到的最大宽度
+* @param lines 第几行
+* @return 最多显示的字数
+*/
+@TargetApi(Build.VERSION_CODES.M)
+int getLineMaxNumber(String text, TextPaint paint, int maxWidth, int lines)
+```
+
+#### 禁止EditText输入空格
+
+- setEditTextInhibitInputSpace();
+
+```java
+/**
+* @param editText edittext对象
+*/
+setEditTextInhibitInputSpace(EditText editText)
+```
+
+#### 禁止EditText输入特殊字符
+
+- setEditTextInhibitInputSpeChat();
+
+```java
+/**
+* 特殊字符为: `~!@#$%^&*()+=|{}':;',\[\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？
+* @param editText edittext对象
+*/
+setEditTextInhibitInputSpeChat(EditText editText)
+```
+
+#### 打开软键盘
+
+- openKeybord();
+
+```java
+/**
+* @param mContext 上下文
+*/
+openKeybord(Activity mContext)
+```
+
+#### 关闭软键盘
+
+- closeKeybord();
+
+```java
+/**
+* @param mContext 上下文
+*/
+closeKeybord(Activity mContext)
+```
+
+## TimeUtils
+
+#### 毫秒转换分：秒
+
+- getGapTime();
+
+```java
+/**
+* @param time 毫秒的时间
+* @return 转换为分：秒
+*/
+String getGapTime(long time)
+```
+
+## View的一些封装类
+
+- AutoScrollView
+extends ScrollView 用来解决ScrollView嵌套RecyclerView时，在Android5.0以上设备丢失滑动惯性问题
+
+- EmptyItemAnimator 用来去除recyclerview刷新时闪烁的动画
