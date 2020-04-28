@@ -285,6 +285,21 @@ String getGapTime(long time)
 ## View的一些封装类
 
 - AutoScrollView <br/>
-extends ScrollView 用来解决ScrollView嵌套RecyclerView时，在Android5.0以上设备丢失滑动惯性问题
+继承自ScrollView,用来解决ScrollView嵌套RecyclerView时，在Android5.0以上设备丢失滑动惯性问题<br/>
+使用方法：在xml中插入view，actvity中注册实例使用
 
-- EmptyItemAnimator 用来去除recyclerview刷新时闪烁的动画
+- EmptyItemAnimator <br/>
+继承自SimpleItemAnimator,用来去除recyclerview刷新时闪烁的动画<br/>
+使用方法：Recyclerview.setItemAnimator(new EmptyItemAnimator());
+
+- PopupWindowAndroidN <br/>
+继承自PopupWindow,用来解决Android7.0这个版本popupwindows设置位置无效等问题<br/>
+使用方法：与PopupWindow的使用方法一样
+
+- TopCropImageView <br/>
+继承自AppCompatImageView,用来对图片进行TopCorp裁切，保证顶部不被裁切掉，应用场景：后台不按规范传图保证不切掉人物脑袋<br/>
+使用方法：在xml中插入view，actvity中注册实例使用
+
+- Toast <br/>
+这个Toast类是专门用来去除某些国产OS，比如MIUI，在Toast时会强制加上AppName的问题。如无需求必要性，可以不用<br/>
+使用方法：与原Toast用法完全一样
