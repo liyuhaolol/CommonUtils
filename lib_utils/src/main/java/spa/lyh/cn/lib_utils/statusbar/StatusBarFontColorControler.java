@@ -15,16 +15,16 @@ import spa.lyh.cn.lib_utils.statusbar.lightmode.MIUIHelper;
 
 public class StatusBarFontColorControler {
 
-    public static boolean setStatusBarMode(Activity activity, boolean isLightMode){
+    public static boolean setStatusBarMode(Activity activity, boolean darkFont){
         boolean flag = false;
 
-        if (new MIUIHelper().setLightMode(activity, isLightMode)) {
+        if (new MIUIHelper().setLightMode(activity, darkFont)) {
             flag = true;
-        }else if (new FlymeHelper().setLightMode(activity, isLightMode)) {
+        }else if (new FlymeHelper().setLightMode(activity, darkFont)) {
             flag = true;
-        }else if (new ColorOSHelper().setLightMode(activity, isLightMode)) {
+        }else if (new ColorOSHelper().setLightMode(activity, darkFont)) {
             flag = true;
-        }else if (new AndroidMHelper().setLightMode(activity, isLightMode)) {
+        }else if (new AndroidMHelper().setLightMode(activity, darkFont)) {
             flag = true;
         }
 

@@ -1,4 +1,4 @@
-package spa.lyh.cn.lib_utils;
+package spa.lyh.cn.lib_utils.view;
 
 import android.content.Context;
 import android.content.res.Resources;

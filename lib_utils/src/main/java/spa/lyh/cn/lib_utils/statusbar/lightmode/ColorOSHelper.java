@@ -23,9 +23,10 @@ public class ColorOSHelper implements ILightModeHelper{
             }
             window.getDecorView().setSystemUiVisibility(vis);
             return true;
+        }else {
+            Log.w("LightModeException","Failed to match ColorOS 3.0");
+            return false;
         }
-        Log.w("LightModeException","Failed to match ColorOS");
-        return false;
 
     }
 }

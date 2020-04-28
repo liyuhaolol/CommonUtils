@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 干啥用的不告诉你
+ * 去除recyclerview刷新时闪烁的动画
  */
 
-public class MyItemAnimator extends SimpleItemAnimator {
+public class EmptyItemAnimator extends SimpleItemAnimator {
 
     private static final boolean DEBUG = false;
 

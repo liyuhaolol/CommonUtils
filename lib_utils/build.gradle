@@ -4,14 +4,13 @@ apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
 
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -40,7 +39,7 @@ def libName = 'lib_utils'
 
 group = "spa.lyh.cn"
 
-version = "1.0.2"
+version = "1.0.3"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs

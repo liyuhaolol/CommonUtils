@@ -15,6 +15,13 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AESencryptUtil {
 
+    /**
+     *
+     * @param seed
+     * @param cleartext
+     * @return
+     * @throws Exception
+     */
     public static String encrypt(String seed, String cleartext) throws Exception {
         byte[] rawKey = deriveKeyInsecurely(seed,32).getEncoded();
         byte[] result = encrypt(rawKey, cleartext.getBytes());
