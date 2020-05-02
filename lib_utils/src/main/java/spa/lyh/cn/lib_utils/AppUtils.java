@@ -77,31 +77,44 @@ public class AppUtils {
     }
 
     /**
-     * 检查网络是否可用,AndroidQ因废弃老版本API，所以只能最低23调用了
+     * 检查网络是否可用
      *
      * @param context
      * @return
      */
-    @TargetApi(Build.VERSION_CODES.M)
     public static boolean isNetworkAvailable(Context context) {
         if(context == null)  return false;
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        /*ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivityManager != null) {
             NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
             if (capabilities != null) {
-                /*if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                *//*if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
                     return true;
                 } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
                     return true;
                 }  else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)){
                     return true;
-                }*/
+                }*//*
                 return true;
+            }
+        }
+        return false;*/
+        //上面的方法只支持M以上，不过这里好像不需要
+        ConnectivityManager connectivity = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo info = connectivity.getActiveNetworkInfo();
+            if (info != null && info.isConnected())
+            {
+                // 当前网络是连接的
+                if (info.getState() == NetworkInfo.State.CONNECTED)
+                {
+                    // 当前所连接的网络可用
+                    return true;
+                }
             }
         }
         return false;
     }
-
 }
