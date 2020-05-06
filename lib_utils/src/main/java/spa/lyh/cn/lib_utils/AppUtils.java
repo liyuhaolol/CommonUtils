@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.view.View;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -116,5 +117,33 @@ public class AppUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 设置显示的样式
+     * @param decorView
+     * @param visibility
+     */
+    public static void setSystemUiVisibility(View decorView, int visibility){
+        setSystemUiVisibility(decorView,visibility,true);
+    }
+
+    /**
+     * 设置显示的样式
+     * @param decorView
+     * @param visibility
+     * @param isAddVisibility 是否添加这个属性，true添加，false移除
+     */
+    public static void setSystemUiVisibility(View decorView,int visibility,boolean isAddVisibility){
+        int oldVis = decorView.getSystemUiVisibility();
+        int newVis = oldVis;
+        if (isAddVisibility){
+            newVis |= visibility;
+        }else {
+            newVis &= ~visibility;
+        }
+        if (newVis != oldVis) {
+            decorView.setSystemUiVisibility(newVis);
+        }
     }
 }

@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 6
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.6"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -39,7 +39,7 @@ def libName = 'lib_utils'
 
 group = "spa.lyh.cn"
 
-version = "1.0.5"
+version = "1.0.6"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs

@@ -3,6 +3,7 @@ package spa.lyh.cn.lib_utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Point;
 
 public class PixelUtils {
     /**
@@ -28,16 +29,16 @@ public class PixelUtils {
     }
 
     /**
-     * * 用于获取状态栏的高度。 使用Resource对象获取
+     * 用于获取状态栏的高度。 使用Resource对象获取
      *
      * @param activity 上下文
      * @return 返回状态栏高度的像素值。
      */
-    public static int getStatusBarHeight(Context context) {
+    public static int getStatusBarHeight(Activity activity) {
         int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
+            result = activity.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }
@@ -45,13 +46,25 @@ public class PixelUtils {
     /**
      * 用于获取导航栏的高度。 使用Resource对象获取
      *
-     * @param context 上下文
+     * @param activity 上下文
      * @return 返回状态栏高度的像素值。
      */
-    public static int getNavigationBarHeight(Context context) {
-        Resources resources = context.getResources();
+    public static int getNavigationBarHeight(Activity activity) {
+        Resources resources = activity.getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height","dimen", "android");
         int height = resources.getDimensionPixelSize(resourceId);
+        Point size = new Point();
+        Point realSize = new Point();
+        activity.getWindowManager().getDefaultDisplay().getSize(size);
+        activity.getWindowManager().getDefaultDisplay().getRealSize(realSize);
+        if (realSize.equals(size)) {
+           height = 0;
+        } else {
+            size.y = size.y + height;
+            if (realSize.y < size.y){
+                height = 0;
+            }
+        }
         return height;
     }
 }

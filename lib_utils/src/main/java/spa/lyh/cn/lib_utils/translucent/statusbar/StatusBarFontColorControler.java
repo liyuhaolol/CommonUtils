@@ -1,11 +1,11 @@
-package spa.lyh.cn.lib_utils.statusbar;
+package spa.lyh.cn.lib_utils.translucent.statusbar;
 
 import android.app.Activity;
 
-import spa.lyh.cn.lib_utils.statusbar.lightmode.AndroidMHelper;
-import spa.lyh.cn.lib_utils.statusbar.lightmode.ColorOSHelper;
-import spa.lyh.cn.lib_utils.statusbar.lightmode.FlymeHelper;
-import spa.lyh.cn.lib_utils.statusbar.lightmode.MIUIHelper;
+import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.AndroidMHelper;
+import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.ColorOSHelper;
+import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.FlymeHelper;
+import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.MIUIHelper;
 
 
 /**

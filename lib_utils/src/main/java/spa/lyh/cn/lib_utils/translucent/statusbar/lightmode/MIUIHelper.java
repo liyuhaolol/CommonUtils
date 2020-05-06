@@ -1,4 +1,4 @@
-package spa.lyh.cn.lib_utils.statusbar.lightmode;
+package spa.lyh.cn.lib_utils.translucent.statusbar.lightmode;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
