@@ -1,23 +1,17 @@
 package spa.lyh.cn.commonutils;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import spa.lyh.cn.lib_utils.AppUtils;
+import android.widget.TextView;
+
 import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
-import spa.lyh.cn.lib_utils.view.EmptyItemAnimator;
+import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
+import spa.lyh.cn.lib_utils.translucent.statusbar.StatusBarFontColorControler;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ABC {
 
     TextView tv;
     View vv;
@@ -32,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this, AppUtils.isNetworkAvailable(this)+"",Toast.LENGTH_SHORT).show();
         //EmptyItemAnimator myItemAnimator = new EmptyItemAnimator();
         Log.e("qwer","高度："+PixelUtils.getNavigationBarHeight(this));
-        BarUtils.autoFitStatusBar(this,R.id.status_bar);
-        BarUtils.autoFitNavigationBar(this,R.id.nav_bar);
-        //BarUtils.autoFitBothBar(this,R.id.status_bar,R.id.nav_bar);
-        AppUtils.setSystemUiVisibility(getWindow().getDecorView(), View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR,true);
-        //Log.e("qwer","颜色："+getWindow().getNavigationBarColor());
-        /*new Handler(getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                AppUtils.setSystemUiVisibility(getWindow().getDecorView(), View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR,false);
-            }
-        },1000);*/
+
+        BarUtils.autoFitBothBar(this,R.id.status_bar,R.id.nav_bar);
+        StatusBarFontColorControler.setStatusBarMode(this,true);
+        NavBarFontColorControler.setNavBarMode(this,true);
+
+
+
+        //BarUtils.hideNavigationBar(this);
+
     }
+
+
 }

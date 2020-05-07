@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.0.6更新
+
+- 增加navigationBar的相关适配
+
 ## 1.0.5更新
 
 - 修正一些错误
@@ -18,7 +22,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.0.4'
+    implementation 'spa.lyh.cn:lib_utils:1.0.6'
 ```
 
 ## 引用的主要类

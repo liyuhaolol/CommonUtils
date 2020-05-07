@@ -1,11 +1,6 @@
 package spa.lyh.cn.commonutils;
 
-import androidx.annotation.Nullable;
 
-public class ABC {
+public abstract class ABC extends ASD{
 
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        return super.equals(obj);
-    }
 }

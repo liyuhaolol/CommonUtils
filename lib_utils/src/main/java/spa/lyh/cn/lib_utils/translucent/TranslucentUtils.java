@@ -32,7 +32,11 @@ public class TranslucentUtils {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-            window.setNavigationBarColor(0x01FFFFFF);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                window.setNavigationBarColor(0x01FFFFFF);
+            }else {
+                window.setNavigationBarColor(Color.TRANSPARENT);
+            }
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             Window window = activity.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
