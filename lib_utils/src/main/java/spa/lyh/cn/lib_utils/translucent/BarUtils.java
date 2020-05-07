@@ -17,6 +17,14 @@ public class BarUtils {
     public static void autoFitNavigationBar(Activity activity, int barId){
         View navigationbar = activity.findViewById(barId);
         navigationbar.getLayoutParams().height = PixelUtils.getNavigationBarHeight(activity);
+        TranslucentUtils.setTranslucentBottom(activity);
+    }
+
+    public static void autoFitBothBar(Activity activity, int statusBarId, int navigationBarId){
+        View statusbar = activity.findViewById(statusBarId);
+        statusbar.getLayoutParams().height = PixelUtils.getStatusBarHeight(activity);
+        View navigationbar = activity.findViewById(navigationBarId);
+        navigationbar.getLayoutParams().height = PixelUtils.getNavigationBarHeight(activity);
         TranslucentUtils.setTranslucentBoth(activity);
     }
 }
