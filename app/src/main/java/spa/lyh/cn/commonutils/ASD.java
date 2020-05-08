@@ -13,6 +13,7 @@ public abstract class ASD extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TranslucentUtils.setTranslucentBoth(this);
+        //TranslucentUtils.setTranslucentBottom(this);
     }
 
 }

@@ -27,9 +27,10 @@ public class MainActivity extends ABC {
         //EmptyItemAnimator myItemAnimator = new EmptyItemAnimator();
         Log.e("qwer","高度："+PixelUtils.getNavigationBarHeight(this));
 
+
         BarUtils.autoFitBothBar(this,R.id.status_bar,R.id.nav_bar);
-        StatusBarFontColorControler.setStatusBarMode(this,true);
-        NavBarFontColorControler.setNavBarMode(this,true);
+        /*StatusBarFontColorControler.setStatusBarMode(this,true);
+        NavBarFontColorControler.setNavBarMode(this,true);*/
 
 
 
