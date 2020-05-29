@@ -62,20 +62,6 @@ String encrypt(String seed, String cleartext)
 */
 String encrypt(String seed, String cleartext)
 ```
-## StatusBarFontColorControler
-
-#### 状态栏字体颜色
-
-- setStatusBarMode();
-
-```java
-/**
-* @param activity 上下文
-* @param darkFont 是否为深色字体
-* @return 是否匹配成功，true代表执行了某个区块的逻辑，false代表没有匹配成功
-*/
-boolean setStatusBarMode(Activity activity, boolean darkFont)
-```
 
 ## AppUtils
 
@@ -335,6 +321,90 @@ long getLong(String key, int defValue, Context context)
 void remove(String key, Context context)
 
 void clear(Context context)
+```
+
+## TranslucentUtils
+
+#### 状态栏和导航栏沉浸式的相关代码
+
+```java
+/**
+* 只沉浸状态栏
+* Android4.4的手机为阴影沉浸
+* Android5.0以上为完全透明沉浸
+*/
+void setTranslucentTOP(Activity activity)
+
+/**
+* 只沉浸导航栏
+* Android7.0以下的手机为阴影沉浸
+* Android8.0以上为完全透明沉浸
+*/
+void setTranslucentBottom(Activity activity)
+
+/**
+* 同时沉浸状态栏和导航栏
+* Android4.4的手机为阴影渐变沉浸
+* Android5.0以上，Android7.0以下为完全透明状态栏，阴影沉浸导航栏
+* Android8.0以上为完全透明沉浸
+*/
+void setTranslucentBoth(Activity activity)
+```
+
+## BarUtils
+
+#### 状态栏跟导航栏，用来动态撑空间的工具类
+
+```java
+/**
+* 自动撑状态栏的高度
+* @param statusBarId 状态栏位置的ResId
+*/
+void autoFitStatusBar(Activity activity, int statusBarId)
+
+/**
+* 自动撑导航栏的高度
+* @param navigationBarId 导航栏位置的ResId
+*/
+void autoFitNavBar(Activity activity, int navigationBarId)
+
+/**
+* 同时撑导航栏和状态栏
+* @param statusBarId 状态栏位置的ResId
+* @param navigationBarId 导航栏位置的ResId
+*/
+void autoFitBothBar(Activity activity, int statusBarId, int navigationBarId)
+```
+
+## StatusBarFontColorControler
+
+#### 状态栏字体颜色
+
+- setStatusBarMode();
+
+```java
+/**
+* 动态适配状态栏的字体颜色，大多数情况实在Android6.0以上生效
+* @param activity 上下文
+* @param darkFont 是否为深色字体
+* @return 是否匹配成功，true代表执行了某个区块的逻辑，false代表没有匹配成功
+*/
+boolean setStatusBarMode(Activity activity, boolean darkFont)
+```
+
+## NavBarFontColorControler
+
+#### 导航栏字体颜色
+
+- setNavBarMode();
+
+```java
+/**
+* Android8.0以上才会生效，与沉浸式工具配合使用
+* @param activity 上下文
+* @param darkFont 是否为深色字体
+*/
+void setNavBarMode(Activity activity,boolean darkFont)
 ```
 
 ## View的一些封装类
