@@ -26,7 +26,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.0.6'
+    implementation 'spa.lyh.cn:lib_utils:1.0.7'
 ```
 
 ## 引用的主要类
@@ -296,6 +296,45 @@ closeKeybord(Activity mContext)
 * @return 转换为分：秒
 */
 String getGapTime(long time)
+```
+
+## SPUtils
+
+#### SharedPreferences工具类
+
+```java
+/**
+* 对应的方法顺序为
+* 写入boolean
+* 读取boolean
+* 写入string
+* 读取string
+* 写入int
+* 读取int
+* 写入long
+* 读取long
+* 移除某一项
+* 完全移除sp的内容
+*/
+void putBoolean(String key, boolean value, Context context)
+
+boolean getBoolean(String key, boolean defValue, Context context)
+
+void putString(String key, String value, Context context)
+
+String getString(String key, String defValue, Context context)
+
+void putInt(String key, int value, Context context)
+
+int getInt(String key, int defValue, Context context)
+
+void putLong(String key, long value, Context context)
+
+long getLong(String key, int defValue, Context context)
+
+void remove(String key, Context context)
+
+void clear(Context context)
 ```
 
 ## View的一些封装类
