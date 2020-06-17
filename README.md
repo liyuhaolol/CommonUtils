@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.0.9更新
+
+- 添加状态栏的显示和隐藏
+
 ## 1.0.7更新
 
 - 修正透明遮罩为黑色底
@@ -26,7 +30,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.0.7'
+    implementation 'spa.lyh.cn:lib_utils:1.0.9'
 ```
 
 ## 引用的主要类
@@ -374,6 +378,24 @@ void autoFitNavBar(Activity activity, int navigationBarId)
 * @param navigationBarId 导航栏位置的ResId
 */
 void autoFitBothBar(Activity activity, int statusBarId, int navigationBarId)
+
+/**
+* 隐藏导航栏
+* @param activity 上下文
+*/
+void hideNavigationBar(Activity activity)
+
+/**
+* 显示状态栏
+* @param activity 上下文
+*/
+void showStatusBar(Activity activity)
+
+/**
+* 隐藏状态栏
+* @param activity 上下文
+*/
+void hideStatusBar(Activity activity)
 ```
 
 ## StatusBarFontColorControler
