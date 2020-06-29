@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.0更新
+
+- 添加兼容性读取res文件夹内容的方法
+
 ## 1.0.9更新
 
 - 添加状态栏的显示和隐藏
@@ -30,7 +34,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.0.9'
+    implementation 'spa.lyh.cn:lib_utils:1.1.0'
 ```
 
 ## 引用的主要类
@@ -104,6 +108,19 @@ boolean checkDeviceHasNavigationBar(Context context)
 * @return 对应图片的bitmap
 */
 Bitmap getImageFromAssetsFile(Context context, String fileName)
+```
+
+#### 读取Res文件夹中的图片资源
+
+- getImageFromRes();
+
+```java
+/**
+* @param context 上下文
+* @param resId 图片资源id
+* @return 对应图片的bitmap
+*/
+Bitmap getImageFromRes(Context context, int resId)
 ```
 
 #### 检查网络是否可用
