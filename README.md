@@ -42,7 +42,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.1'
+    implementation 'spa.lyh.cn:lib_utils:1.1.2'
 ```
 
 ## 引用的主要类
