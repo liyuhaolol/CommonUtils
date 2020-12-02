@@ -2,9 +2,11 @@ package spa.lyh.cn.lib_utils.translucent;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
+import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class BarUtils {
 
@@ -15,10 +17,17 @@ public class BarUtils {
         }
     }
 
-    public static void autoFitNavBar(Activity activity, int navigationBarId){
+    public static void autoFitNavBar(final Activity activity, int navigationBarId){
         if (navigationBarId > 0){
-            View navigationbar = activity.findViewById(navigationBarId);
-            navigationbar.getLayoutParams().height = PixelUtils.getNavigationBarHeight(activity);
+            final View navigationbar = activity.findViewById(navigationBarId);
+            PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
+                @Override
+                public void getHeight(int height) {
+                    ViewGroup.LayoutParams layoutParams = navigationbar.getLayoutParams();
+                    layoutParams.height = height;
+                    navigationbar.setLayoutParams(layoutParams);
+                }
+            });
         }
     }
 

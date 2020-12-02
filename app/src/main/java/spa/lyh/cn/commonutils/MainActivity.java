@@ -8,8 +8,7 @@ import android.widget.TextView;
 
 import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
-import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
-import spa.lyh.cn.lib_utils.translucent.statusbar.StatusBarFontColorControler;
+import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class MainActivity extends ABC {
 
@@ -22,10 +21,13 @@ public class MainActivity extends ABC {
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tv);
         vv = findViewById(R.id.nav_bar);
-        //Toast.makeText(this, AppUtils.checkDeviceHasNavigationBar(this)+"",Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, AppUtils.isNetworkAvailable(this)+"",Toast.LENGTH_SHORT).show();
-        //EmptyItemAnimator myItemAnimator = new EmptyItemAnimator();
-        Log.e("qwer","高度："+PixelUtils.getNavigationBarHeight(this));
+        PixelUtils.getNavigationBarHeight(this, new OnNavHeightListener() {
+            @Override
+            public void getHeight(int height) {
+                Log.e("qwer","导航栏高度："+height);
+            }
+        });
+
 
 
         BarUtils.autoFitBothBar(this,R.id.status_bar,R.id.nav_bar);
@@ -37,6 +39,5 @@ public class MainActivity extends ABC {
         //BarUtils.hideNavigationBar(this);
 
     }
-
 
 }
