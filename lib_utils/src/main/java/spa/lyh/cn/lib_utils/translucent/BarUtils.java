@@ -41,4 +41,12 @@ public class BarUtils {
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
+
+    public static void showStatusBar(Activity activity){
+        AppUtils.setSystemUiVisibility(activity.getWindow().getDecorView(),View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN,false);
+    }
+
+    public static void hideStatusBar(Activity activity){
+        AppUtils.setSystemUiVisibility(activity.getWindow().getDecorView(),View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
 }

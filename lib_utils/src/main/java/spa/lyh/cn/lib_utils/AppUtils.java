@@ -7,6 +7,8 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
@@ -75,6 +77,25 @@ public class AppUtils {
             e.printStackTrace();
         }
         return image;
+    }
+
+    /** 读取Res文件夹中的图片资源
+     * @param context
+     * @param resId 图片资源id
+     * @return
+     */
+    public static Bitmap getImageFromRes(Context context, int resId) {
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resId);
+        if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP && bitmap == null){
+            //当前资源不存在，或者可能是vector,按照vector再获取一次
+            Drawable vectorDrawable = context.getDrawable(resId);
+            bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
+                    vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            vectorDrawable.draw(canvas);
+        }
+        return bitmap;
     }
 
     /**
