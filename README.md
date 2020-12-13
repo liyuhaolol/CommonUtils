@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.3更新
+
+- 修正修正Android11的导航栏阴影问题
+
 ## 1.1.2更新
 
 - 修正高版本Android导航栏高度问题
@@ -42,7 +46,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.2'
+    implementation 'spa.lyh.cn:lib_utils:1.1.3'
 ```
 
 ## 引用的主要类
