@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 /**
  * Created by liyuhao on 2017/3/17.
@@ -12,9 +13,9 @@ import android.view.View;
 public class AndroidMHelper implements ILightModeHelper {
 
     @Override
-    public boolean setLightMode(Activity activity, boolean isLightMode) {
+    public boolean setLightMode(Window window, boolean isLightMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            View view = activity.getWindow().getDecorView();
+            View view = window.getDecorView();
             int oldVis = view.getSystemUiVisibility();
             int newVis = oldVis;
             if (isLightMode){

@@ -2,9 +2,15 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.4更新
+
+- 移除状态栏对flyme老版本的支持
+- 移除状态栏对colorOS老版本的支持
+- 移除沉浸式对activity的依赖
+
 ## 1.1.3更新
 
-- 修正修正Android11的导航栏阴影问题
+- 修正Android11的导航栏阴影问题
 
 ## 1.1.2更新
 
@@ -46,7 +52,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.3'
+    implementation 'spa.lyh.cn:lib_utils:1.1.4'
 ```
 
 ## 引用的主要类

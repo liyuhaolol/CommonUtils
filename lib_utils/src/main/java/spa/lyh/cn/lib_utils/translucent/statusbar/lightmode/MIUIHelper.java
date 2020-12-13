@@ -16,9 +16,8 @@ import java.lang.reflect.Method;
 
 public class MIUIHelper implements ILightModeHelper {
     @Override
-    public boolean setLightMode(Activity activity, boolean isLightMode) {
+    public boolean setLightMode(Window window, boolean isLightMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            Window window = activity.getWindow();
             View view = window.getDecorView();
             if (window != null){
                 Class clazz = window.getClass();

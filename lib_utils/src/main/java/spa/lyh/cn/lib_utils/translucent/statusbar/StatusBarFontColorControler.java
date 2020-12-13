@@ -1,10 +1,8 @@
 package spa.lyh.cn.lib_utils.translucent.statusbar;
 
-import android.app.Activity;
+import android.view.Window;
 
 import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.AndroidMHelper;
-import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.ColorOSHelper;
-import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.FlymeHelper;
 import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.MIUIHelper;
 
 
@@ -15,16 +13,12 @@ import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.MIUIHelper;
 
 public class StatusBarFontColorControler {
 
-    public static boolean setStatusBarMode(Activity activity, boolean darkFont){
+    public static boolean setStatusBarMode(Window window, boolean darkFont){
         boolean flag = false;
 
-        if (new MIUIHelper().setLightMode(activity, darkFont)) {
+        if (new MIUIHelper().setLightMode(window, darkFont)) {
             flag = true;
-        }else if (new FlymeHelper().setLightMode(activity, darkFont)) {
-            flag = true;
-        }else if (new ColorOSHelper().setLightMode(activity, darkFont)) {
-            flag = true;
-        }else if (new AndroidMHelper().setLightMode(activity, darkFont)) {
+        }else if (new AndroidMHelper().setLightMode(window, darkFont)) {
             flag = true;
         }
 
