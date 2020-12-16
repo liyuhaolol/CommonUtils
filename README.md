@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.5更新
+
+- 沉浸式修正对输入法的一些兼容
+
 ## 1.1.4更新
 
 - 移除状态栏对flyme老版本的支持
@@ -52,7 +56,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.4'
+    implementation 'spa.lyh.cn:lib_utils:1.1.5'
 ```
 
 ## 引用的主要类
