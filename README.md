@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.6更新
+
+- 增加Android9.0以上对刘海屏的判断
+
 ## 1.1.5更新
 
 - 沉浸式修正对输入法的一些兼容
@@ -56,7 +60,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.5'
+    implementation 'spa.lyh.cn:lib_utils:1.1.6'
 ```
 
 ## 引用的主要类

@@ -8,16 +8,23 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.view.DisplayCutout;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsets;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.List;
+
+import spa.lyh.cn.lib_utils.listener.NotchListener;
 
 public class AppUtils {
 
@@ -165,6 +172,37 @@ public class AppUtils {
         }
         if (newVis != oldVis) {
             decorView.setSystemUiVisibility(newVis);
+        }
+    }
+
+    /**
+     * 判断是否存在刘海屏等异形屏
+     * @param window
+     * @param listener
+     */
+    public static void hasNotch (Window window, final NotchListener listener){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+            final View decorView = window.getDecorView();
+            decorView.post(new Runnable() {
+                @Override
+                public void run() {
+                    WindowInsets windowInsets = decorView.getRootWindowInsets();
+                    DisplayCutout displayCutout = windowInsets.getDisplayCutout();
+                    if (displayCutout != null){
+                        List<Rect> rects = displayCutout.getBoundingRects();
+                        if (rects == null || rects.size() == 0) {
+                            listener.onResult(false);
+                        }else {
+                            listener.onResult(true);
+                        }
+                    }else {
+                        listener.onResult(false);
+                    }
+                }
+            });
+        }else {
+            //暂时不对Android8.1的非官方API刘海屏进行兼容
+            listener.onResult(false);
         }
     }
 }

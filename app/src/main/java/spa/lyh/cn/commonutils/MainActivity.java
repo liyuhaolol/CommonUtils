@@ -5,8 +5,11 @@ import android.util.Log;
 import android.view.View;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
+import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
+import spa.lyh.cn.lib_utils.listener.NotchListener;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
@@ -37,6 +40,17 @@ public class MainActivity extends ABC {
 
 
         //BarUtils.hideNavigationBar(this);
+
+        AppUtils.hasNotch(getWindow(), new NotchListener() {
+            @Override
+            public void onResult(boolean hasNotch) {
+                if (hasNotch){
+                    Toast.makeText(MainActivity.this,"存在刘海",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(MainActivity.this,"不存在刘海",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 
