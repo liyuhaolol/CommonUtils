@@ -33,7 +33,7 @@ public class MainActivity extends ABC {
 
 
 
-        BarUtils.autoFitBothBar(this,R.id.status_bar,R.id.nav_bar);
+        BarUtils.autoFitBothBar(this,findViewById(R.id.status_bar),R.id.nav_bar);
         /*StatusBarFontColorControler.setStatusBarMode(this,true);
         NavBarFontColorControler.setNavBarMode(this,true);*/
 

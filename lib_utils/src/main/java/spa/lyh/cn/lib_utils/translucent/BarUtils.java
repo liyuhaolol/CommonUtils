@@ -14,7 +14,17 @@ public class BarUtils {
     public static void autoFitStatusBar(Activity activity, int statusBarId){
         if (statusBarId > 0){
             View statusbar = activity.findViewById(statusBarId);
-            statusbar.getLayoutParams().height = PixelUtils.getStatusBarHeight(activity);
+            ViewGroup.LayoutParams layoutParams = statusbar.getLayoutParams();
+            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
+            statusbar.setLayoutParams(layoutParams);
+        }
+    }
+
+    public static void autoFitStatusBar(Activity activity, View statusBar){
+        if (statusBar != null){
+            ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
+            statusBar.setLayoutParams(layoutParams);
         }
     }
 
@@ -32,8 +42,36 @@ public class BarUtils {
         }
     }
 
+    public static void autoFitNavBar(final Activity activity, final View navigationBar){
+        if (navigationBar != null){
+            PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
+                @Override
+                public void getHeight(int height) {
+                    ViewGroup.LayoutParams layoutParams = navigationBar.getLayoutParams();
+                    layoutParams.height = height;
+                    navigationBar.setLayoutParams(layoutParams);
+                }
+            });
+        }
+    }
+
     public static void autoFitBothBar(Activity activity, int statusBarId, int navigationBarId){
         autoFitStatusBar(activity,statusBarId);
+        autoFitNavBar(activity,navigationBarId);
+    }
+
+    public static void autoFitBothBar(Activity activity, View statusBar, View navigationBar){
+        autoFitStatusBar(activity,statusBar);
+        autoFitNavBar(activity,navigationBar);
+    }
+
+    public static void autoFitBothBar(Activity activity, int statusBarId, View navigationBar){
+        autoFitStatusBar(activity,statusBarId);
+        autoFitNavBar(activity,navigationBar);
+    }
+
+    public static void autoFitBothBar(Activity activity, View statusBar, int navigationBarId){
+        autoFitStatusBar(activity,statusBar);
         autoFitNavBar(activity,navigationBarId);
     }
 
