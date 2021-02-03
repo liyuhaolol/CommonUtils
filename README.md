@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.1.8更新
+
+- 增加导航栏种类的判断，判断阈值是0.03
+
 ## 1.1.7更新
 
 - 增加状态栏，导航栏对View的直接支持，用来兼容Fragment中的适配问题
@@ -64,7 +68,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.7'
+    implementation 'spa.lyh.cn:lib_utils:1.1.8'
 ```
 
 ## 引用的主要类

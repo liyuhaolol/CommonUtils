@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 
+import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class PixelUtils {
@@ -78,7 +81,8 @@ public class PixelUtils {
                         public void onViewAttachedToWindow(View v) {
                             if (activity.getWindow().getDecorView().getRootWindowInsets() != null){
                                 if (listener != null){
-                                    listener.getHeight(activity.getWindow().getDecorView().getRootWindowInsets().getStableInsetBottom());
+                                    int height = activity.getWindow().getDecorView().getRootWindowInsets().getStableInsetBottom();
+                                    listener.getHeight(height,getNavBarType(activity,height));
                                 }
                             }
                             activity.getWindow().getDecorView().removeOnAttachStateChangeListener(this);
@@ -98,7 +102,22 @@ public class PixelUtils {
             }
         }
         if (canDo && listener != null){
-            listener.getHeight(height);
+            listener.getHeight(height,getNavBarType(activity,height));
+        }
+    }
+
+    private static int getNavBarType(Activity activity,float navHeight){
+        //获取屏幕高像素
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        float deviceHeight = metrics.heightPixels;
+        float result = navHeight / deviceHeight;
+        if (result == 0){
+            return BarUtils.NO_NAVIGATION;
+        }else if (result > 0 && result <= 0.03){
+            return BarUtils.GESTURE_NAVIGATION;
+        }else {
+            return BarUtils.NORMAL_NAVIGATION;
         }
     }
 }

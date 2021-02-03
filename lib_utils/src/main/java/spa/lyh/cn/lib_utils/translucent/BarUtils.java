@@ -10,6 +10,9 @@ import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class BarUtils {
+    public final static int NO_NAVIGATION = 0;
+    public final static int NORMAL_NAVIGATION = 1;
+    public final static int GESTURE_NAVIGATION = 2;
 
     public static void autoFitStatusBar(Activity activity, int statusBarId){
         if (statusBarId > 0){
@@ -33,7 +36,7 @@ public class BarUtils {
             final View navigationbar = activity.findViewById(navigationBarId);
             PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
                 @Override
-                public void getHeight(int height) {
+                public void getHeight(int height,int navbarType) {
                     ViewGroup.LayoutParams layoutParams = navigationbar.getLayoutParams();
                     layoutParams.height = height;
                     navigationbar.setLayoutParams(layoutParams);
@@ -46,13 +49,17 @@ public class BarUtils {
         if (navigationBar != null){
             PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
                 @Override
-                public void getHeight(int height) {
+                public void getHeight(int height,int navbarType) {
                     ViewGroup.LayoutParams layoutParams = navigationBar.getLayoutParams();
                     layoutParams.height = height;
                     navigationBar.setLayoutParams(layoutParams);
                 }
             });
         }
+    }
+
+    public static void NavbarHeightCallback(Activity activity,OnNavHeightListener listener){
+        PixelUtils.getNavigationBarHeight(activity,listener);
     }
 
     public static void autoFitBothBar(Activity activity, int statusBarId, int navigationBarId){

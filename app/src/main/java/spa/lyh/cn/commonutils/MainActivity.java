@@ -24,10 +24,21 @@ public class MainActivity extends ABC {
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tv);
         vv = findViewById(R.id.nav_bar);
-        PixelUtils.getNavigationBarHeight(this, new OnNavHeightListener() {
+        BarUtils.NavbarHeightCallback(this, new OnNavHeightListener() {
             @Override
-            public void getHeight(int height) {
+            public void getHeight(int height,int navbarType) {
                 Log.e("qwer","导航栏高度："+height);
+                switch (navbarType){
+                    case BarUtils.NO_NAVIGATION:
+                        Toast.makeText(MainActivity.this,"没有导航栏",Toast.LENGTH_LONG).show();
+                        break;
+                    case BarUtils.NORMAL_NAVIGATION:
+                        Toast.makeText(MainActivity.this,"普通导航栏",Toast.LENGTH_LONG).show();
+                        break;
+                    case BarUtils.GESTURE_NAVIGATION:
+                        Toast.makeText(MainActivity.this,"小白条",Toast.LENGTH_LONG).show();
+                        break;
+                }
             }
         });
 
