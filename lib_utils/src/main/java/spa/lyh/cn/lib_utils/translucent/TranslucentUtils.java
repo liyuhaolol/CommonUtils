@@ -44,12 +44,12 @@ public class TranslucentUtils {
             //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
+            setSystemUiVisibility(window.getDecorView(),View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                 window.setNavigationBarColor(0x01000000);
             }else {
                 window.setNavigationBarColor(Color.TRANSPARENT);
             }
-            setSystemUiVisibility(window.getDecorView(),View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             setTranslucentTOP(window);
             setTranslucentBottom(window);
