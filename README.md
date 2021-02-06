@@ -72,7 +72,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.8'
+    implementation 'spa.lyh.cn:lib_utils:1.1.9'
 ```
 
 ## 引用的主要类
