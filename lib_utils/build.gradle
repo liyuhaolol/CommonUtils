@@ -32,16 +32,16 @@ dependencies {
     implementation "com.google.android.material:material:${versions.design}"
 }
 
-def siteUrl = 'https://github.com/liyuhaolol/CommonUtils'
+/*def siteUrl = 'https://github.com/liyuhaolol/CommonUtils'
 
 def gitUrl = 'https://github.com/liyuhaolol/CommonUtils.git'
 
 def libName = 'lib_utils'
 
 
-version = versions.versionName
+version = versions.versionName*/
 
-task sourcesJar(type: Jar) {
+/*task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
@@ -49,9 +49,9 @@ task sourcesJar(type: Jar) {
 artifacts {
     //archives javadocJar
     archives sourcesJar
-}
+}*/
 
-install{
+/*install{
     repositories.mavenInstaller{
 // This generates POM.xml with proper parameters
         pom{
@@ -88,10 +88,10 @@ install{
             }
         }
     }
-}
+}*/
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+/*Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())*/
 
 
 /*bintray{
