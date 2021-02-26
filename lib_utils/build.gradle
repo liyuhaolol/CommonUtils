@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.jfrog.bintray'
+group = "spa.lyh.cn"
 
 android {
     compileSdkVersion 30
@@ -37,7 +38,6 @@ def gitUrl = 'https://github.com/liyuhaolol/CommonUtils.git'
 
 def libName = 'lib_utils'
 
-group = "spa.lyh.cn"
 
 version = versions.versionName
 
@@ -94,7 +94,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 
-bintray{
+/*bintray{
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
@@ -108,4 +108,4 @@ bintray{
         licenses = ["Apache-2.0"]
         publish = true
     }
-}
+}*/
