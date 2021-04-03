@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.2.0更新
+
+- 更换源到jitpack
+
 ## 1.1.9更新
 
 - 修正沉浸式启动顺序错误，造成某些弱智手机OS会全部黑掉的问题
@@ -72,7 +76,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'spa.lyh.cn:lib_utils:1.1.9'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.2.0'
 ```
 
 ## 引用的主要类
