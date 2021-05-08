@@ -2,6 +2,12 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.2.1更新
+
+- 去除自定义Toast，因为Android11彻底封禁自定义Toast的可能
+- 沉浸式使用刘海区域无论沉浸的是状态栏，还是导航栏
+- 去除判断是否存在刘海的判断逻辑，在Android11上似乎判断的结果有问题
+
 ## 1.2.0更新
 
 - 更换源到jitpack
@@ -76,7 +82,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.2.0'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.2.1'
 ```
 
 ## 引用的主要类

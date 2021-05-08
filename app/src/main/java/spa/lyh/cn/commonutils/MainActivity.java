@@ -52,7 +52,7 @@ public class MainActivity extends ABC {
 
         //BarUtils.hideNavigationBar(this);
 
-        AppUtils.hasNotch(getWindow(), new NotchListener() {
+        /*AppUtils.hasNotch(getWindow(), new NotchListener() {
             @Override
             public void onResult(boolean hasNotch) {
                 if (hasNotch){
@@ -61,7 +61,7 @@ public class MainActivity extends ABC {
                     Toast.makeText(MainActivity.this,"不存在刘海",Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        });*/
 
     }
 
