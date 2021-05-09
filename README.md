@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.2.2更新
+
+- 恢复刘海的判断，我这里没有足够的机型测试，不过错误似乎只发生在某些机型的虚拟机上，真机未发生此问题。
+
 ## 1.2.1更新
 
 - 去除自定义Toast，因为Android11彻底封禁自定义Toast的可能
@@ -82,7 +86,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.2.1'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.2.2'
 ```
 
 ## 引用的主要类

@@ -180,7 +180,7 @@ public class AppUtils {
      * @param window
      * @param listener
      */
-    /*public static void hasNotch (Window window, final NotchListener listener){
+    public static void hasNotch (Window window, final NotchListener listener){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
             final View decorView = window.getDecorView();
             decorView.post(new Runnable() {
@@ -204,5 +204,5 @@ public class AppUtils {
             //暂时不对Android8.1的非官方API刘海屏进行兼容
             listener.onResult(false);
         }
-    }*/
+    }
 }
