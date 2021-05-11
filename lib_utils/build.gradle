@@ -38,6 +38,8 @@ def gitUrl = 'https://github.com/liyuhaolol/CommonUtils.git'
 
 def libName = 'lib_utils'
 
+group = "spa.lyh.cn"
+
 
 version = versions.versionName*/
 
