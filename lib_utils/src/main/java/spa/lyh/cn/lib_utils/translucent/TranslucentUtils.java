@@ -33,7 +33,13 @@ public class TranslucentUtils {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
                 window.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                    window.setNavigationBarDividerColor(0x01000000);
+                }else {
+                    window.setNavigationBarDividerColor(Color.TRANSPARENT);
+                }
             }
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                 window.setNavigationBarColor(0x01000000);
             }else {
@@ -53,6 +59,11 @@ public class TranslucentUtils {
             setSystemUiVisibility(window.getDecorView(),View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
                 window.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                    window.setNavigationBarDividerColor(0x01000000);
+                }else {
+                    window.setNavigationBarDividerColor(Color.TRANSPARENT);
+                }
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                 window.setNavigationBarColor(0x01000000);

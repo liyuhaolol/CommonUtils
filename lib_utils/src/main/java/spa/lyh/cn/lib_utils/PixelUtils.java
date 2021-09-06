@@ -67,9 +67,6 @@ public class PixelUtils {
         Point realSize = new Point();
         activity.getWindowManager().getDefaultDisplay().getSize(size);
         activity.getWindowManager().getDefaultDisplay().getRealSize(realSize);
-        /////////////////////////////////
-
-        //////////////////////////////////
         if (realSize.equals(size)) {
             //两个尺寸相等，说明没有导航栏
            height = 0;

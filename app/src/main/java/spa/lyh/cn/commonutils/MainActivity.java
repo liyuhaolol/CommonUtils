@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.lang.reflect.Method;
+
 import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.listener.NotchListener;
@@ -32,10 +34,17 @@ public class MainActivity extends ABC {
         tv_status_bar_height.setText("状态栏高度："+PixelUtils.getStatusBarHeight(this));
         tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
+        tv_nav_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
+            }
+        });
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
         BarUtils.NavbarHeightCallback(this, new OnNavHeightListener() {
             @Override
             public void getHeight(int height,int navbarType) {
+                Log.e("qwer","导航栏高度："+height);
                 tv_nav_bar_height.setText("导航栏高度："+height);
                 switch (navbarType){
                     case BarUtils.NO_NAVIGATION:
@@ -75,17 +84,21 @@ public class MainActivity extends ABC {
 /*        getWindow().getDecorView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
             public void onViewAttachedToWindow(View v) {
-                Log.e("qwer","onViewAttachedToWindow");
+                //Log.e("qwer","onViewAttachedToWindow");
+                Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
             }
 
             @Override
             public void onViewDetachedFromWindow(View v) {
-                Log.e("qwer","onViewDetachedFromWindow");
+                //Log.e("qwer","onViewDetachedFromWindow");
             }
         });*/
-
-        Log.e("qwer","是否存在导航栏："+isNavigationBarExist(this));
-
+/*        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+            @Override
+            public void onSystemUiVisibilityChange(int visibility) {
+                Log.e("qwer","visibility:"+visibility);
+            }
+        });*/
     }
 
     private static final String NAVIGATION= "navigationBarBackground";
@@ -99,12 +112,14 @@ public class MainActivity extends ABC {
                 vp.getChildAt(i).getContext().getPackageName();
                 if (vp.getChildAt(i).getId()!= NO_ID && NAVIGATION.equals(activity.getResources().getResourceEntryName(vp.getChildAt(i).getId()))) {
                     View v = vp.getChildAt(i);
+                    Log.e("qwer","获得的高度："+v.getHeight());
                     return true;
                 }
             }
         }
         return false;
     }
+
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
