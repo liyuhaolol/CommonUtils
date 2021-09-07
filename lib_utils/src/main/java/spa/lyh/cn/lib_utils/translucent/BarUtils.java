@@ -1,6 +1,7 @@
 package spa.lyh.cn.lib_utils.translucent;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -17,17 +18,27 @@ public class BarUtils {
     public static void autoFitStatusBar(Activity activity, int statusBarId){
         if (statusBarId > 0){
             View statusbar = activity.findViewById(statusBarId);
-            ViewGroup.LayoutParams layoutParams = statusbar.getLayoutParams();
-            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
-            statusbar.setLayoutParams(layoutParams);
+            int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
+            int viewHeight = statusbar.getMeasuredHeight();
+            if (viewHeight != height){
+                //高度发生改变
+                ViewGroup.LayoutParams layoutParams = statusbar.getLayoutParams();
+                layoutParams.height = PixelUtils.getStatusBarHeight(activity);
+                statusbar.setLayoutParams(layoutParams);
+            }
         }
     }
 
     public static void autoFitStatusBar(Activity activity, View statusBar){
         if (statusBar != null){
-            ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
-            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
-            statusBar.setLayoutParams(layoutParams);
+            int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
+            int viewHeight = statusBar.getMeasuredHeight();
+            if (viewHeight != height){
+                //高度发生改变
+                ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+                layoutParams.height = height;
+                statusBar.setLayoutParams(layoutParams);
+            }
         }
     }
 
@@ -37,9 +48,13 @@ public class BarUtils {
             PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
                 @Override
                 public void getHeight(int height,int navbarType) {
-                    ViewGroup.LayoutParams layoutParams = navigationbar.getLayoutParams();
-                    layoutParams.height = height;
-                    navigationbar.setLayoutParams(layoutParams);
+                    int viewHeight = navigationbar.getMeasuredHeight();
+                    if (viewHeight != height){
+                        //高度发生改变
+                        ViewGroup.LayoutParams layoutParams = navigationbar.getLayoutParams();
+                        layoutParams.height = height;
+                        navigationbar.setLayoutParams(layoutParams);
+                    }
                 }
             });
         }
@@ -50,9 +65,13 @@ public class BarUtils {
             PixelUtils.getNavigationBarHeight(activity, new OnNavHeightListener() {
                 @Override
                 public void getHeight(int height,int navbarType) {
-                    ViewGroup.LayoutParams layoutParams = navigationBar.getLayoutParams();
-                    layoutParams.height = height;
-                    navigationBar.setLayoutParams(layoutParams);
+                    int viewHeight = navigationBar.getMeasuredHeight();
+                    if (viewHeight != height){
+                        //高度发生改变
+                        ViewGroup.LayoutParams layoutParams = navigationBar.getLayoutParams();
+                        layoutParams.height = height;
+                        navigationBar.setLayoutParams(layoutParams);
+                    }
                 }
             });
         }

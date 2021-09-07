@@ -18,7 +18,6 @@ import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public abstract class ASD extends AppCompatActivity {
-    private int navbarHeight;//这个字段仅仅用来保存曾经的导航栏高度，仅仅用来兼容国内系统UI不按照原生逻辑走的问题，可能10年后会删除这个无脑的逻辑吧
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,16 +33,5 @@ public abstract class ASD extends AppCompatActivity {
         }else {
             window.setNavigationBarColor(Color.TRANSPARENT);
         }*/
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        PixelUtils.getNavigationBarHeight(this, new OnNavHeightListener() {
-            @Override
-            public void getHeight(int height, int navbarType) {
-                Log.e("qwer","");
-            }
-        });
     }
 }

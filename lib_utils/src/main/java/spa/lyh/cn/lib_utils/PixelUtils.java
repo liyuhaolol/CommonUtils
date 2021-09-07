@@ -7,14 +7,16 @@ import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.WindowInsets;
 
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class PixelUtils {
-
     /**
      * dp转px
      * @param context 上下文
@@ -63,14 +65,13 @@ public class PixelUtils {
         int resourceId = resources.getIdentifier("navigation_bar_height","dimen", "android");
         int height = resources.getDimensionPixelSize(resourceId);
         boolean canDo = true;
-        Point size = new Point();
-        Point realSize = new Point();
-        activity.getWindowManager().getDefaultDisplay().getSize(size);
-        activity.getWindowManager().getDefaultDisplay().getRealSize(realSize);
-        if (realSize.y == size.y || realSize.y == (size.y + PixelUtils.getStatusBarHeight(activity))) {
-            //两个尺寸相等，说明没有导航栏
-           height = 0;
-        } else {
+        boolean hasMenuKey = ViewConfiguration.get(activity).hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+        if(hasMenuKey && hasBackKey) {
+            //存在物理按键，把高度改为0
+            height = 0;
+        }else {
+            //没有物理按键
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 //Android8.0以上才存在所谓全面屏手势
                 canDo = false;

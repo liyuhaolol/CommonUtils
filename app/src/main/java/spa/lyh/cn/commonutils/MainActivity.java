@@ -11,8 +11,11 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
 
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.widget.TextView;
@@ -37,21 +40,20 @@ public class MainActivity extends ABC {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_status_bar_height = findViewById(R.id.tv_status_bar_height);
-        tv_status_bar_height.setText("状态栏高度："+PixelUtils.getStatusBarHeight(this));
         tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
-        tv_nav_bar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
-                getWindow().getDecorView().post(mRunnable);
-            }
-        });
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tv_status_bar_height.setText("状态栏高度："+PixelUtils.getStatusBarHeight(this));
+        BarUtils.autoFitBothBar(this,findViewById(R.id.status_bar),R.id.nav_bar);
         BarUtils.NavbarHeightCallback(this, new OnNavHeightListener() {
             @Override
             public void getHeight(int height,int navbarType) {
-                Log.e("qwer","导航栏高度："+height);
                 tv_nav_bar_height.setText("导航栏高度："+height);
                 switch (navbarType){
                     case BarUtils.NO_NAVIGATION:
@@ -66,12 +68,6 @@ public class MainActivity extends ABC {
                 }
             }
         });
-
-
-
-        BarUtils.autoFitBothBar(this,findViewById(R.id.status_bar),R.id.nav_bar);
-
-
         AppUtils.hasNotch(getWindow(), new NotchListener() {
             @Override
             public void onResult(boolean hasNotch) {
@@ -82,11 +78,7 @@ public class MainActivity extends ABC {
                 }
             }
         });
-
-        getWindow().getDecorView().post(mRunnable);
-
     }
-
 
     /**
      * ！！！！！这方法没用，就这里复制着而已。
