@@ -67,38 +67,24 @@ public class PixelUtils {
         Point realSize = new Point();
         activity.getWindowManager().getDefaultDisplay().getSize(size);
         activity.getWindowManager().getDefaultDisplay().getRealSize(realSize);
-        if (realSize.equals(size)) {
+        if (realSize.y == size.y || realSize.y == (size.y + PixelUtils.getStatusBarHeight(activity))) {
             //两个尺寸相等，说明没有导航栏
            height = 0;
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 //Android8.0以上才存在所谓全面屏手势
-                WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
-                if (insets == null){
-                    canDo = false;
-                    activity.getWindow().getDecorView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                        @Override
-                        public void onViewAttachedToWindow(View v) {
-                            if (activity.getWindow().getDecorView().getRootWindowInsets() != null){
-                                if (listener != null){
-                                    int height = activity.getWindow().getDecorView().getRootWindowInsets().getStableInsetBottom();
-                                    listener.getHeight(height,getNavBarType(activity,height));
-                                }
+                canDo = false;
+                activity.getWindow().getDecorView().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (activity.getWindow().getDecorView().getRootWindowInsets() != null){
+                            if (listener != null){
+                                int height = activity.getWindow().getDecorView().getRootWindowInsets().getStableInsetBottom();
+                                listener.getHeight(height,getNavBarType(activity,height));
                             }
-                            activity.getWindow().getDecorView().removeOnAttachStateChangeListener(this);
                         }
-
-                        @Override
-                        public void onViewDetachedFromWindow(View v) {
-
-                        }
-                    });
-                }else {
-                    if (insets.getStableInsetBottom() == 0){
-                        //导航栏没有高度
-                        height = 0;
                     }
-                }
+                });
             }
         }
         if (canDo && listener != null){

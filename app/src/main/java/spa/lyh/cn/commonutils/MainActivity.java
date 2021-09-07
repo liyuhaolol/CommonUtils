@@ -3,12 +3,18 @@ package spa.lyh.cn.commonutils;
 import static android.view.View.NO_ID;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +43,8 @@ public class MainActivity extends ABC {
         tv_nav_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
+                //Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
+                getWindow().getDecorView().post(mRunnable);
             }
         });
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
@@ -63,12 +70,7 @@ public class MainActivity extends ABC {
 
 
         BarUtils.autoFitBothBar(this,findViewById(R.id.status_bar),R.id.nav_bar);
-        /*StatusBarFontColorControler.setStatusBarMode(this,true);
-        NavBarFontColorControler.setNavBarMode(this,true);*/
 
-
-
-        //BarUtils.hideNavigationBar(this);
 
         AppUtils.hasNotch(getWindow(), new NotchListener() {
             @Override
@@ -81,50 +83,44 @@ public class MainActivity extends ABC {
             }
         });
 
-/*        getWindow().getDecorView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-            @Override
-            public void onViewAttachedToWindow(View v) {
-                //Log.e("qwer","onViewAttachedToWindow");
-                Log.e("qwer","是否存在导航栏："+isNavigationBarExist(MainActivity.this));
-            }
+        getWindow().getDecorView().post(mRunnable);
 
-            @Override
-            public void onViewDetachedFromWindow(View v) {
-                //Log.e("qwer","onViewDetachedFromWindow");
-            }
-        });*/
-/*        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                Log.e("qwer","visibility:"+visibility);
-            }
-        });*/
     }
 
-    private static final String NAVIGATION= "navigationBarBackground";
 
-    // 该方法需要在View完全被绘制出来之后调用，否则判断不了
-    //在比如 onWindowFocusChanged（）方法中可以得到正确的结果
-    public static  boolean isNavigationBarExist(@NonNull Activity activity){
-        ViewGroup vp = (ViewGroup) activity.getWindow().getDecorView();
-        if (vp != null) {
-            for (int i = 0; i < vp.getChildCount(); i++) {
-                vp.getChildAt(i).getContext().getPackageName();
-                if (vp.getChildAt(i).getId()!= NO_ID && NAVIGATION.equals(activity.getResources().getResourceEntryName(vp.getChildAt(i).getId()))) {
-                    View v = vp.getChildAt(i);
-                    Log.e("qwer","获得的高度："+v.getHeight());
-                    return true;
-                }
-            }
+    /**
+     * ！！！！！这方法没用，就这里复制着而已。
+     * 获取主流手机设置中的"navigation_gesture_on"值，判断当前系统是使用导航键还是手势导航操作
+     * @param context app Context
+     * @return
+     * false 表示使用的是虚拟导航键(NavigationBar)，
+     * true 表示使用的是手势， 默认是false
+     */
+    private static boolean navigationGestureEnabled(Context context) {
+        int val = Settings.Global.getInt(context.getContentResolver(), getDeviceInfo(), 0);
+        return val != 0;
+    }
+    /**
+     * 获取设备信息（目前支持几大主流的全面屏手机，亲测华为、小米、oppo、魅族、vivo、三星都可以）
+     * 这玩意用来判断是否开启了手势，跟是否隐藏小白条完全无关哦
+     * @return
+     */
+    private static String getDeviceInfo() {
+        String brand = Build.BRAND;
+        if(TextUtils.isEmpty(brand)) return "navigationbar_is_min";
+
+        if (brand.equalsIgnoreCase("HUAWEI")||"HONOR".equals(brand)) {
+            return "navigationbar_is_min";
+        } else if (brand.equalsIgnoreCase("XIAOMI")) {
+            return "force_fsg_nav_bar";
+        } else if (brand.equalsIgnoreCase("VIVO")) {
+            return "navigation_gesture_on";
+        } else if (brand.equalsIgnoreCase("OPPO")) {
+            return "navigation_gesture_on";
+        } else if(brand.equalsIgnoreCase("samsung")){
+            return "navigationbar_hide_bar_enabled";
+        }else {
+            return "navigationbar_is_min";
         }
-        return false;
-    }
-
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        Log.e("qwer","onConfigurationChanged");
-        BarUtils.autoFitBothBar(this,findViewById(R.id.status_bar),R.id.nav_bar);
     }
 }
