@@ -6,8 +6,11 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+
+import java.lang.reflect.Method;
 
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
@@ -64,11 +67,44 @@ public class PixelUtils {
         boolean hasMenuKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_MENU);
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
         boolean hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
+
+        boolean doSecondPart = false;//是否执行第二种判断逻辑
         if(hasMenuKey || hasBackKey || hasHomeKey) {
-            //存在物理按键，把高度改为0
-            height = 0;
+            //存在物理按键
+            boolean hasNavigationBar = false;//初始不存在导航栏
+            //这里要再次判断是否存在虚拟按键，因为有的手机，没有物理按键，他也会判断存在物理按键
+            int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
+            if (id > 0) {
+                hasNavigationBar = resources.getBoolean(id);
+            }
+            if (!hasNavigationBar){
+                //第一种方式判断没有导航栏，继续判断
+                try {
+                    Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+                    Method m = systemPropertiesClass.getMethod("get", String.class);
+                    String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+                    if ("1".equals(navBarOverride)) {
+                        hasNavigationBar = false;
+                    } else{
+                        hasNavigationBar = true;
+                    }
+                } catch (Exception e) {
+                }
+            }
+
+            if (hasNavigationBar){
+                //判断存在导航栏，与最初的判断冲突
+                doSecondPart = true;
+            }else {
+                //判断确实没有导航栏，将高度改为0
+                height = 0;
+            }
         }else {
             //没有物理按键
+            doSecondPart = true;
+        }
+
+        if (doSecondPart){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 //Android8.0以上才存在所谓全面屏手势
                 canDo = false;
@@ -96,6 +132,8 @@ public class PixelUtils {
                 }
             }
         }
+
+
         if (canDo && listener != null){
             listener.getHeight(height,getNavBarType(activity,height));
         }
