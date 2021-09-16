@@ -23,4 +23,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation project(':lib_utils')
     //implementation 'com.github.liyuhaolol:CommonUtils:1.2.3'
+    implementation project(':language_english')
+    implementation "com.github.liyuhaolol:LanguagePack:1.0.0"
 }

@@ -1,7 +1,11 @@
 package spa.lyh.cn.lib_utils;
 
+import android.content.Context;
+
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import spa.lyh.cn.lib_utils.no.LanguageUtils;
 
 public class TimeUtils {
     private final static long second = 1000;
@@ -36,7 +40,6 @@ public class TimeUtils {
      * @return
      */
     public static String getShowTime(long timeSeconds){
-//        long diff = getLongToString(getLosAngelesTime()) -timeSeconds;  //0;//当前时间 - 得到时间
         long time = System.currentTimeMillis();
         long diff = time - timeSeconds;  //0;//当前时间 - 得到时间
         long r= 0;
@@ -59,6 +62,45 @@ public class TimeUtils {
             r = (diff / hour);
             if (r < 24){
                 return  r + "小时前";
+            }
+        }
+
+        return getCurrentTimeToString(timeSeconds,"yyyy-MM-dd");
+    }
+
+    public static String getShowTime(Context context,long timeSeconds){
+        long time = System.currentTimeMillis();
+        long diff = time - timeSeconds;  //0;//当前时间 - 得到时间
+        long r= 0;
+        String secondAgo,minuteAgo,hourAgo;
+        if (LanguageUtils.isActivited()){
+            secondAgo = LanguageUtils.getLanguageString(context,R.string.second_ago);
+            minuteAgo = LanguageUtils.getLanguageString(context,R.string.minute_ago);
+            hourAgo = LanguageUtils.getLanguageString(context,R.string.hour_ago);
+        }else {
+            secondAgo = context.getString(R.string.second_ago);
+            minuteAgo = context.getString(R.string.minute_ago);
+            hourAgo = context.getString(R.string.hour_ago);
+        }
+
+        if (diff > second){
+            r = (diff /second);
+            if (r < 59){//大于秒
+                return  r + secondAgo;
+            }
+        }
+
+        if (diff > minute){
+            r = (diff / minute);
+            if (r < 59){
+                return  r + minuteAgo;
+            }
+        }
+
+        if (diff > hour){
+            r = (diff / hour);
+            if (r < 24){
+                return  r + hourAgo;
             }
         }
 

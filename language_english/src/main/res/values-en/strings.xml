@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,ExtraTranslation">
+    <string name="second_ago">s ago</string>
+    <string name="minute_ago">m ago</string>
+    <string name="hour_ago">h ago</string>
+
+</resources>

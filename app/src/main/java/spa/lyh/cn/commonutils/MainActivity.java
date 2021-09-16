@@ -25,8 +25,11 @@ import androidx.annotation.NonNull;
 
 import java.lang.reflect.Method;
 
+import spa.lyh.cn.languagepack.LanguagesPack;
+import spa.lyh.cn.languagepack.model.LanguageInfo;
 import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
+import spa.lyh.cn.lib_utils.TimeUtils;
 import spa.lyh.cn.lib_utils.listener.NotchListener;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
@@ -43,6 +46,11 @@ public class MainActivity extends ABC {
         tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
+        LanguageInfo info = new LanguageInfo();
+        info.language="en";
+        info.country="";
+        LanguagesPack.setLanguage(this,info);
+        Log.e("qwer", TimeUtils.getShowTime(this,1631771072946L));
 
     }
 
@@ -114,5 +122,11 @@ public class MainActivity extends ABC {
         }else {
             return "navigationbar_is_min";
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        // 国际化适配（绑定语种）
+        super.attachBaseContext(LanguagesPack.attach(newBase));
     }
 }
