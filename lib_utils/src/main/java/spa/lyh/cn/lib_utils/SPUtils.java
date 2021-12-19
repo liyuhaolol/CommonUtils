@@ -48,8 +48,16 @@ public class SPUtils {
         SPUtils.getInstance(context).edit().putLong(key, value).apply();
     }
 
-    public static long getLong(String key, int defValue, Context context) {
+    public static long getLong(String key, long defValue, Context context) {
         return SPUtils.getInstance(context).getLong(key, defValue);
+    }
+
+    public static void putFloat(String key, float value, Context context) {
+        SPUtils.getInstance(context).edit().putFloat(key, value).apply();
+    }
+
+    public static float getFloat(String key, float defValue, Context context) {
+        return SPUtils.getInstance(context).getFloat(key, defValue);
     }
 
     /**
