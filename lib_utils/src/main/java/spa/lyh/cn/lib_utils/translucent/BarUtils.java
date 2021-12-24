@@ -18,33 +18,27 @@ public class BarUtils {
     public static void autoFitStatusBar(Activity activity, int statusBarId){
         if (statusBarId > 0){
             View statusbar = activity.findViewById(statusBarId);
-            /*int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
+            int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
             int viewHeight = statusbar.getMeasuredHeight();
             if (viewHeight != height){
                 //高度发生改变
                 ViewGroup.LayoutParams layoutParams = statusbar.getLayoutParams();
                 layoutParams.height = PixelUtils.getStatusBarHeight(activity);
                 statusbar.setLayoutParams(layoutParams);
-            }*/
-            ViewGroup.LayoutParams layoutParams = statusbar.getLayoutParams();
-            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
-            statusbar.setLayoutParams(layoutParams);
+            }
         }
     }
 
     public static void autoFitStatusBar(Activity activity, View statusBar){
         if (statusBar != null){
-            /*int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
+            int height = PixelUtils.getStatusBarHeight(activity);//重新获取状态栏高度
             int viewHeight = statusBar.getMeasuredHeight();
             if (viewHeight != height){
                 //高度发生改变
                 ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
                 layoutParams.height = height;
                 statusBar.setLayoutParams(layoutParams);
-            }*/
-            ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
-            layoutParams.height = PixelUtils.getStatusBarHeight(activity);
-            statusBar.setLayoutParams(layoutParams);
+            }
         }
     }
 
