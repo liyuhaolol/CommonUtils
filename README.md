@@ -102,7 +102,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.2.2'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.2.6'
 ```
 
 ## 引用的主要类
