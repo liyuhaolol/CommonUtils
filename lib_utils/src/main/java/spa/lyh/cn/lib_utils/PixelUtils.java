@@ -33,9 +33,9 @@ public class PixelUtils {
      * @param pxValue px值
      * @return dp值
      */
-    public static int px2dip(Context context, float pxValue) {
+    public static float px2dip(Context context, int pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale);
+        return (float) pxValue / scale;
     }
 
     /**
