@@ -110,7 +110,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.2.6'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.3.3'
 ```
 
 ## 引用的主要类
