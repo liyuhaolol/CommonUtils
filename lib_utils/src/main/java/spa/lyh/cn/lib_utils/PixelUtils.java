@@ -41,14 +41,14 @@ public class PixelUtils {
     /**
      * 用于获取状态栏的高度。 使用Resource对象获取
      *
-     * @param activity 上下文
+     * @param context 上下文
      * @return 返回状态栏高度的像素值。
      */
-    public static int getStatusBarHeight(Activity activity) {
+    public static int getStatusBarHeight(Context context) {
         int result = 0;
-        int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = activity.getResources().getDimensionPixelSize(resourceId);
+            result = context.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }
