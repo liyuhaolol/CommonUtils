@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.3.4更新
+
+- 增加使用View来控制软键盘的打开关闭，增强使用场景兼容性
+
 ## 1.3.3更新
 
 - 获取状态栏高度换为Context增强兼容性
@@ -110,7 +114,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.3.3'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.3.4'
 ```
 
 ## 引用的主要类

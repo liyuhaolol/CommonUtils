@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import spa.lyh.cn.languagepack.LanguagesPack;
 import spa.lyh.cn.languagepack.model.LanguageInfo;
 import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
+import spa.lyh.cn.lib_utils.TextDetailUtils;
 import spa.lyh.cn.lib_utils.TimeUtils;
 import spa.lyh.cn.lib_utils.listener.NotchListener;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
@@ -37,6 +39,7 @@ import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 public class MainActivity extends ABC {
 
     TextView tv_status_bar,tv_nav_bar,tv_status_bar_height,tv_nav_bar_height;
+    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class MainActivity extends ABC {
         tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
+        et = findViewById(R.id.et);
         LanguageInfo info = new LanguageInfo();
         info.language="en";
         info.country="";
@@ -128,5 +132,14 @@ public class MainActivity extends ABC {
     protected void attachBaseContext(Context newBase) {
         // 国际化适配（绑定语种）
         super.attachBaseContext(LanguagesPack.attach(newBase));
+    }
+
+    public void onOpen(View v){
+        et.requestFocus();
+        TextDetailUtils.openKeybord(et);
+    }
+
+    public void onClose(View v){
+        TextDetailUtils.closeKeybord(et);
     }
 }
