@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.3.5更新
+
+- 添加NTP服务器校对时间模块
+
 ## 1.3.4更新
 
 - 增加使用View来控制软键盘的打开关闭，增强使用场景兼容性
@@ -114,7 +118,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.3.4'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.3.5'
 ```
 
 ## 引用的主要类
