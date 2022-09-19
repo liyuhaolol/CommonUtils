@@ -121,6 +121,10 @@ public class SntpClient {
             mRoundTripTime = roundTripTime;
             ntpTime = mNtpTime + SystemClock.elapsedRealtime() - mNtpTimeReference;//计算后的ntp校对时间
             systemTime = System.currentTimeMillis();//校对时间
+            if (context != null){
+                SPUtils.putLong("lyh_ntp_time",ntpTime,context);
+                SPUtils.putLong("lyh_sys_time",systemTime,context);
+            }
         } catch (Exception e) {
 //            if (DBG) {
 //                Log.e(TAG, "Error address: " + address.toString());
@@ -248,6 +252,7 @@ public class SntpClient {
     private long ntpTime;
     private static SntpClient instance;
     private boolean isRequest;
+    private Context context;
 
     private static String[] ntpServers = new String[]{
             "cn.ntp.org.cn"
@@ -270,7 +275,8 @@ public class SntpClient {
     }
 
     //获取时间
-    public long getTime(Context context){
+    public long getTime(Context cont){
+        this.context = cont.getApplicationContext();
         if (ntpTime > 0){
             //已存在缓存时间
             long nowSystemTime = System.currentTimeMillis();//当前系统时间
@@ -288,6 +294,7 @@ public class SntpClient {
             //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
             if (ntpTime > 0 && systemTime > 0){
                 //存在持久化数据
+                System.out.println("取得持久化的ntp服务器时间");
                 long nowSystemTime = System.currentTimeMillis();//当前系统时间
                 return nowSystemTime - systemTime + ntpTime;
             }else {
