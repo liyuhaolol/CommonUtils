@@ -1,6 +1,7 @@
 package spa.lyh.cn.lib_utils.ntp;
 
 
+import android.content.Context;
 import android.os.SystemClock;
 
 import java.net.DatagramPacket;
@@ -9,6 +10,8 @@ import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import spa.lyh.cn.lib_utils.SPUtils;
 
 public class SntpClient {
     private static final String TAG = "SntpClient";
@@ -267,7 +270,7 @@ public class SntpClient {
     }
 
     //获取时间
-    public long getTime(){
+    public long getTime(Context context){
         if (ntpTime > 0){
             //已存在缓存时间
             long nowSystemTime = System.currentTimeMillis();//当前系统时间
@@ -280,7 +283,16 @@ public class SntpClient {
         }else {
             //还没有ntp时间
             requestNtpTime();
-            return System.currentTimeMillis();
+            ntpTime = SPUtils.getLong("lyh_ntp_time",0,context);
+            systemTime = SPUtils.getLong("lyh_sys_time",0,context);
+            //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
+            if (ntpTime > 0 && systemTime > 0){
+                //存在持久化数据
+                long nowSystemTime = System.currentTimeMillis();//当前系统时间
+                return nowSystemTime - systemTime + ntpTime;
+            }else {
+                return System.currentTimeMillis();
+            }
         }
     }
 
