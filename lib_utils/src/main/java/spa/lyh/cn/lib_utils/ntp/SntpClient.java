@@ -276,27 +276,42 @@ public class SntpClient {
 
     //获取时间
     public long getTime(Context cont){
-        this.context = cont.getApplicationContext();
-        if (ntpTime > 0){
-            //已存在缓存时间
-            long nowSystemTime = System.currentTimeMillis();//当前系统时间
-            long nowNtpTime = nowSystemTime - systemTime + ntpTime;
-            if ((nowNtpTime - ntpTime) >= 3600000){
-                //时间已经超过1个小时，重新去校对一次时间
-                requestNtpTime();
-            }
-            return nowNtpTime;
-        }else {
-            //还没有ntp时间
-            requestNtpTime();
-            ntpTime = SPUtils.getLong("lyh_ntp_time",0,context);
-            systemTime = SPUtils.getLong("lyh_sys_time",0,context);
-            //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
-            if (ntpTime > 0 && systemTime > 0){
-                //存在持久化数据
-                System.out.println("取得持久化的ntp服务器时间");
+        if (cont != null){
+            this.context = cont.getApplicationContext();
+            if (ntpTime > 0){
+                //已存在缓存时间
                 long nowSystemTime = System.currentTimeMillis();//当前系统时间
-                return nowSystemTime - systemTime + ntpTime;
+                long nowNtpTime = nowSystemTime - systemTime + ntpTime;
+                if ((nowNtpTime - ntpTime) >= 3600000){
+                    //时间已经超过1个小时，重新去校对一次时间
+                    requestNtpTime();
+                }
+                return nowNtpTime;
+            }else {
+                //还没有ntp时间
+                requestNtpTime();
+                ntpTime = SPUtils.getLong("lyh_ntp_time",0,context);
+                systemTime = SPUtils.getLong("lyh_sys_time",0,context);
+                //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
+                if (ntpTime > 0 && systemTime > 0){
+                    //存在持久化数据
+                    System.out.println("取得持久化的ntp服务器时间");
+                    long nowSystemTime = System.currentTimeMillis();//当前系统时间
+                    return nowSystemTime - systemTime + ntpTime;
+                }else {
+                    return System.currentTimeMillis();
+                }
+            }
+        }else {
+            if (ntpTime > 0){
+                //已存在缓存时间
+                long nowSystemTime = System.currentTimeMillis();//当前系统时间
+                long nowNtpTime = nowSystemTime - systemTime + ntpTime;
+                if ((nowNtpTime - ntpTime) >= 3600000){
+                    //时间已经超过1个小时，重新去校对一次时间
+                    requestNtpTime();
+                }
+                return nowNtpTime;
             }else {
                 return System.currentTimeMillis();
             }
