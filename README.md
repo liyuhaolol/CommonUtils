@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.3.9更新
+
+- 增加获取线程名称的方法
+
 ## 1.3.8更新
 
 - 进一步处理Context为空的问题
@@ -130,7 +134,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.3.8'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.3.9'
 ```
 
 ## 引用的主要类
