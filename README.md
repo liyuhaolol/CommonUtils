@@ -2,6 +2,10 @@
 
 封装了一些通用工具类，可以直接使用，不用每次再单独复制粘贴
 
+## 1.3.8更新
+
+- 进一步处理Context为空的问题
+
 ## 1.3.7更新
 
 - NTP服务器时间加入Context为空时的逻辑，避免空指针
@@ -126,7 +130,7 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.3.7'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.3.8'
 ```
 
 ## 引用的主要类

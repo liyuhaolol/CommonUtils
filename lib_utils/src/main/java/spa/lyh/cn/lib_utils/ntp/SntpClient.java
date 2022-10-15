@@ -3,6 +3,7 @@ package spa.lyh.cn.lib_utils.ntp;
 
 import android.content.Context;
 import android.os.SystemClock;
+import android.util.Log;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -108,9 +109,9 @@ public class SntpClient {
             //             = ((transit + skew) + (transmitTime - transmitTime - transit + skew))/2
             //             = (transit + skew - transit + skew)/2
             //             = (2 * skew)/2 = skew
-            System.out.println("Request time form ntp server success, " + address.toString() + " ,roundTripTime: " + roundTripTime);
+            Log.i(TAG,"Request time form ntp server success, " + address.toString() + " ,roundTripTime: " + roundTripTime);
             if (DBG) {
-                System.out.println("round trip: " + roundTripTime + "ms, " +
+                Log.i(TAG,"round trip: " + roundTripTime + "ms, " +
                         "clock offset: " + clockOffset + "ms");
             }
 
@@ -129,7 +130,7 @@ public class SntpClient {
 //            if (DBG) {
 //                Log.e(TAG, "Error address: " + address.toString());
 //            }
-            System.out.println("Request time from ntp server failed ,msg: " + e.getMessage());
+            Log.i(TAG,"Request time from ntp server failed ,msg: " + e.getMessage());
             return false;
         } finally {
             if (socket != null) {
@@ -276,45 +277,50 @@ public class SntpClient {
 
     //获取时间
     public long getTime(Context cont){
-        if (cont != null){
-            this.context = cont.getApplicationContext();
-            if (ntpTime > 0){
-                //已存在缓存时间
-                long nowSystemTime = System.currentTimeMillis();//当前系统时间
-                long nowNtpTime = nowSystemTime - systemTime + ntpTime;
-                if ((nowNtpTime - ntpTime) >= 3600000){
-                    //时间已经超过1个小时，重新去校对一次时间
-                    requestNtpTime();
-                }
-                return nowNtpTime;
-            }else {
-                //还没有ntp时间
-                requestNtpTime();
-                ntpTime = SPUtils.getLong("lyh_ntp_time",0,context);
-                systemTime = SPUtils.getLong("lyh_sys_time",0,context);
-                //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
-                if (ntpTime > 0 && systemTime > 0){
-                    //存在持久化数据
-                    System.out.println("取得持久化的ntp服务器时间");
+        try{
+            if (cont != null){
+                this.context = cont.getApplicationContext();
+                if (ntpTime > 0){
+                    //已存在缓存时间
                     long nowSystemTime = System.currentTimeMillis();//当前系统时间
-                    return nowSystemTime - systemTime + ntpTime;
+                    long nowNtpTime = nowSystemTime - systemTime + ntpTime;
+                    if ((nowNtpTime - ntpTime) >= 3600000){
+                        //时间已经超过1个小时，重新去校对一次时间
+                        requestNtpTime();
+                    }
+                    return nowNtpTime;
+                }else {
+                    //还没有ntp时间
+                    requestNtpTime();
+                    ntpTime = SPUtils.getLong("lyh_ntp_time",0,context);
+                    systemTime = SPUtils.getLong("lyh_sys_time",0,context);
+                    //如果ntptime存在持久化，优先返回持久化，避免竞速广告接口总是失败
+                    if (ntpTime > 0 && systemTime > 0){
+                        //存在持久化数据
+                        Log.e(TAG,"取得持久化的ntp服务器时间");
+                        long nowSystemTime = System.currentTimeMillis();//当前系统时间
+                        return nowSystemTime - systemTime + ntpTime;
+                    }else {
+                        return System.currentTimeMillis();
+                    }
+                }
+            }else {
+                if (ntpTime > 0){
+                    //已存在缓存时间
+                    long nowSystemTime = System.currentTimeMillis();//当前系统时间
+                    long nowNtpTime = nowSystemTime - systemTime + ntpTime;
+                    if ((nowNtpTime - ntpTime) >= 3600000){
+                        //时间已经超过1个小时，重新去校对一次时间
+                        requestNtpTime();
+                    }
+                    return nowNtpTime;
                 }else {
                     return System.currentTimeMillis();
                 }
             }
-        }else {
-            if (ntpTime > 0){
-                //已存在缓存时间
-                long nowSystemTime = System.currentTimeMillis();//当前系统时间
-                long nowNtpTime = nowSystemTime - systemTime + ntpTime;
-                if ((nowNtpTime - ntpTime) >= 3600000){
-                    //时间已经超过1个小时，重新去校对一次时间
-                    requestNtpTime();
-                }
-                return nowNtpTime;
-            }else {
-                return System.currentTimeMillis();
-            }
+        }catch (Exception e){
+            Log.e(TAG,"获得ntp时间遇到了问题，返回本机时间");
+            return System.currentTimeMillis();
         }
     }
 
@@ -324,7 +330,7 @@ public class SntpClient {
             ExecutorService threadExecutor = Executors.newSingleThreadExecutor();
             threadExecutor.submit(new NtpTask());
         }else {
-            System.out.println("当前有ntp请求正在进行");
+            Log.e(TAG,"当前有ntp请求正在进行");
         }
     }
 
@@ -337,10 +343,10 @@ public class SntpClient {
             for (String host:ntpServers){
                 if (client.requestTime(host,2000)){
                     //请求成功，跳出循环
-                    System.out.println("通过"+host+"校对时间成功");
+                    Log.e(TAG,"通过"+host+"校对时间成功");
                     break;
                 }else {
-                    System.out.println("通过"+host+"校对时间失败");
+                    Log.e(TAG,"通过"+host+"校对时间失败");
                 }
             }
             client.isRequest = false;
