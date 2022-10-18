@@ -33,6 +33,7 @@ import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.TextDetailUtils;
 import spa.lyh.cn.lib_utils.TimeUtils;
 import spa.lyh.cn.lib_utils.listener.NotchListener;
+import spa.lyh.cn.lib_utils.ntp.SntpClient;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
@@ -55,6 +56,8 @@ public class MainActivity extends ABC {
         info.country="";
         LanguagesPack.setLanguage(this,info);
         Log.e("qwer", TimeUtils.getShowTime(this,1631771072946L));
+
+        SntpClient.requestNtpTime();
 
     }
 
