@@ -39,7 +39,7 @@ import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class MainActivity extends ABC {
 
-    TextView tv_status_bar,tv_nav_bar,tv_status_bar_height,tv_nav_bar_height;
+    TextView tv_status_bar,tv_nav_bar,tv_status_bar_height,tv_nav_bar_height,tv_android_version;
     EditText et;
 
     @Override
@@ -50,6 +50,8 @@ public class MainActivity extends ABC {
         tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
+        tv_android_version = findViewById(R.id.tv_android_version);
+        tv_android_version.setText("安卓版本号："+Build.VERSION.SDK_INT);
         et = findViewById(R.id.et);
         LanguageInfo info = new LanguageInfo();
         info.language="en";
