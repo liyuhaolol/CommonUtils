@@ -2,14 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
+    namespace 'spa.lyh.cn.lib_utils'
     compileSdkVersion 30
 
 
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode versions.versionCode
-        versionName versions.versionName
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -21,6 +20,15 @@ android {
         }
     }
 
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {

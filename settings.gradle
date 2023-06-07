@@ -1,3 +1,18 @@
-include ':app', ':lib_utils'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
 rootProject.name='CommonUtils'
+include ':app', ':lib_utils'
 include ':language_english'
