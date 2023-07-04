@@ -18,7 +18,7 @@ public class StatusBarFontColorControler {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){//6.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){//11
                 try{
-                    window.getInsetsController().setSystemBarsAppearance(
+                    window.getDecorView().getWindowInsetsController().setSystemBarsAppearance(
                             darkFont? WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS:0,
                             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
                     );

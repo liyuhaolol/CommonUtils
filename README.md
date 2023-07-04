@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.1'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.3'
 ```
+
+## 1.4.3更新
+
+- 将InsetsController替换为WindowInsetsController，应该从根源上避免了日志报异常的问题
 
 ## 1.4.2更新
 
