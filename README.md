@@ -9,6 +9,10 @@
     implementation 'com.github.liyuhaolol:CommonUtils:1.4.1'
 ```
 
+## 1.4.2更新
+
+- 修正InsetsController会报NULL崩溃的问题
+
 ## 1.4.1更新
 
 - 移除状态栏对老MIUI的支持

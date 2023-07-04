@@ -14,13 +14,13 @@ public class NavBarFontColorControler {
     public static boolean setNavBarMode(Window window, boolean darkFont){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){//8.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){//11'
-                if (window.getInsetsController() != null){
+                try{
                     window.getInsetsController().setSystemBarsAppearance(
-                            darkFont?WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS:0,
+                            darkFont? WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS:0,
                             WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
                     );
                     return true;
-                }else {
+                }catch (Exception e){
                     Log.w("LightModeException","InsetsController is NULL");
                     return false;
                 }
