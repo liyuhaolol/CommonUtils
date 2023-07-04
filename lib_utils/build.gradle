@@ -3,12 +3,12 @@ apply plugin: 'maven-publish'
 
 android {
     namespace 'spa.lyh.cn.lib_utils'
-    compileSdkVersion 30
+    compileSdkVersion 33
 
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 33
 
         consumerProguardFiles 'consumer-rules.pro'
     }

@@ -1,9 +1,10 @@
 package spa.lyh.cn.lib_utils.translucent.statusbar;
 
+import android.os.Build;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
-
-import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.AndroidMHelper;
-import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.MIUIHelper;
+import android.view.WindowInsetsController;
 
 
 /**
@@ -14,14 +15,34 @@ import spa.lyh.cn.lib_utils.translucent.statusbar.lightmode.MIUIHelper;
 public class StatusBarFontColorControler {
 
     public static boolean setStatusBarMode(Window window, boolean darkFont){
-        boolean flag = false;
-
-        if (new MIUIHelper().setLightMode(window, darkFont)) {
-            flag = true;
-        }else if (new AndroidMHelper().setLightMode(window, darkFont)) {
-            flag = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){//6.0
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){//11
+                if (window.getInsetsController() != null){
+                    window.getInsetsController().setSystemBarsAppearance(
+                            darkFont? WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS:0,
+                            WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                    );
+                    return true;
+                }else {
+                    Log.w("LightModeException","InsetsController is NULL");
+                    return false;
+                }
+            }else {
+                View view = window.getDecorView();
+                int oldVis = view.getSystemUiVisibility();
+                int newVis = oldVis;
+                if (darkFont){
+                    newVis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }else {
+                    newVis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                if (newVis != oldVis) {
+                    view.setSystemUiVisibility(newVis);
+                }
+                return true;
+            }
         }
-
-        return flag;
+        Log.w("LightModeException","Failed to match above Android 6.0");
+        return false;
     }
 }

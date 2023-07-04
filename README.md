@@ -6,9 +6,13 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.0'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.1'
 ```
 
+## 1.4.1更新
+
+- 移除状态栏对老MIUI的支持
+- 状态栏和导航栏文字转色增加对Android11以上新API的支持
 
 ## 1.4.0更新
 
