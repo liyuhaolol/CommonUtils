@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 
 import java.lang.reflect.Method;
 
+import spa.lyh.cn.commonutils.dialog.MyDialog;
 import spa.lyh.cn.languagepack.LanguagesPack;
 import spa.lyh.cn.languagepack.model.LanguageInfo;
 import spa.lyh.cn.lib_utils.AppUtils;
@@ -41,6 +42,8 @@ public class MainActivity extends ABC {
 
     TextView tv_status_bar,tv_nav_bar,tv_status_bar_height,tv_nav_bar_height,tv_android_version;
     EditText et;
+
+    MyDialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,9 @@ public class MainActivity extends ABC {
         Log.e("qwer", TimeUtils.getShowTime(this,1631771072946L));
 
         SntpClient.requestNtpTime();
+
+        myDialog = new MyDialog();
+        myDialog.setDialogActivity(this);
 
     }
 
@@ -146,5 +152,9 @@ public class MainActivity extends ABC {
 
     public void onClose(View v){
         TextDetailUtils.closeKeybord(et);
+    }
+
+    public void onShow(View v){
+        myDialog.show();
     }
 }
