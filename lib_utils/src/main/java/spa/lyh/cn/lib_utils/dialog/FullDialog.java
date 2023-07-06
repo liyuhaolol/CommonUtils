@@ -1,10 +1,14 @@
 package spa.lyh.cn.lib_utils.dialog;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -24,6 +28,18 @@ public abstract class FullDialog extends DialogFragment {
         int styleId = setStyleId();
         if (styleId != 0){
             setStyle(STYLE_NO_TITLE,styleId);
+        }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Dialog dialog = getDialog();
+        if (dialog != null){
+            Window window = dialog.getWindow();
+            if (window != null){
+                Log.e(TAG,"onViewCreated");
+            }
         }
     }
 
