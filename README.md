@@ -6,8 +6,23 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.3'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.4'
 ```
+
+## 1.4.4更新
+
+- 增加继承自DialogFragment的FullDialog基类
+#### FullDialog特性
+- 默认dialog可用空间达到全屏，去除了dialog默认的padding以及对状态栏和导航栏的限制
+- 默认开启了沉浸式，所以UI的实际显示区域不在安全区里，如果需求出现UI下沉到导航栏或上抬到状态栏里，需要用户自己按照需求在不布局中添加状态栏和导航栏的占位View并托管给FullDialog处理
+- `isUIimmerseNavbar()`默认为false，所有的导航栏占位View都会占用高度，返回true则小白条状态下，导航栏占位View不会占用高度
+- `setStyleId()`非必传，设置Dialog的主题id
+- `setBackgroundId()`非必传(但是推荐传)设置Dialog布局的根布局Id，如果不返回id，则点击灰色（空白）区域关闭Dialog方法永远无法生效，由于开启了全屏沉浸，并把显示区域拓展到全屏，Dialog原本的灰色遮罩已被完全遮罩，无法响应任何事件，故出此下策
+- `setStatusBarId()`非必传，根据需求如果需要出现顶部状态栏高度占位View的时候，则传递其id，高度由父类`FullDialog`自动负责匹配
+- `setNavigationBarId()`非必传，根据需求如果出现弹窗紧靠下方导航栏，导航栏需要跟随UI的颜色时，需要添加导航栏高度占位View，则传递其id，高度由父类`FullDialog`自动负责匹配
+#### 注意事项
+- Dialog的UI从`onCreateView()`方法中添加，与`Fragment`添加布局方式一致
+- 用户需要自己根据UI颜色来判读，是否需要状态栏和导航栏的文字转色，转色逻辑必须写在`onResume()`里的`super`后面，写在更前面的生命周期里，`FullDialog`无法获取正确的Window对象，所有设置无法生效
 
 ## 1.4.3更新
 

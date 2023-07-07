@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -18,7 +19,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
+import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
 
 public abstract class FullDialog extends DialogFragment {
@@ -34,6 +37,13 @@ public abstract class FullDialog extends DialogFragment {
 
     private View background;
 
+    public Dialog dialog;
+
+    private View statusBar;
+
+    private View navBar;
+
+    private boolean isImmerse = false;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +72,23 @@ public abstract class FullDialog extends DialogFragment {
                 }
             });
         }
+        int statusBarId = setStatusBarId();
+        if (statusBarId != 0){
+            statusBar = view.findViewById(statusBarId);
+        }
+        int navBarId = setNavigationBarId();
+        if (navBarId != 0){
+            navBar = view.findViewById(navBarId);
+        }
+        isImmerse = isUIimmerseNavbar();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Dialog dialog = getDialog();
+        dialog = getDialog();
         if (dialog != null){
+            dialog.setCanceledOnTouchOutside(canCancel);
             window = dialog.getWindow();
             if (window != null){
                 window.setGravity(Gravity.TOP);
@@ -81,6 +101,7 @@ public abstract class FullDialog extends DialogFragment {
                 window.setAttributes(lp);
             }
         }
+        autoFitBarHeight();
     }
 
     @Override
@@ -111,6 +132,40 @@ public abstract class FullDialog extends DialogFragment {
 
     public void setCanceledOnTouchOutside(boolean b){
         canCancel = b;
+        if (dialog != null){
+            dialog.setCanceledOnTouchOutside(b);
+        }
+
+    }
+
+    public void autoFitBarHeight(){
+        if (statusBar != null){
+            BarUtils.autoFitStatusBar(getActivity(),statusBar);
+        }
+        if (navBar != null){
+            BarUtils.NavbarHeightCallback(getActivity(), new OnNavHeightListener() {
+                @Override
+                public void getHeight(int height, int navbarType) {
+                    int realHeight = 0;
+                    switch (navbarType){
+                        case BarUtils.NORMAL_NAVIGATION:
+                        case BarUtils.NO_NAVIGATION:
+                            realHeight = height;//设置对应高度
+                            break;
+                        case BarUtils.GESTURE_NAVIGATION:
+                            if (isImmerse){
+                                realHeight = 0;//手势做沉浸式,高度强制为0
+                            }else {
+                                realHeight = height;//设置对应高度
+                            }
+                            break;
+                    }
+                    ViewGroup.LayoutParams params = navBar.getLayoutParams();
+                    params.height = realHeight;
+                    navBar.setLayoutParams(params);
+                }
+            });
+        }
     }
 
     private String makeShowTag(){
@@ -135,6 +190,9 @@ public abstract class FullDialog extends DialogFragment {
     abstract public int setStatusBarId();
     //传递导航栏id
     abstract public int setNavigationBarId();
+
+    //设计图UI是否会沉浸显示到小白条（导航栏）下方，仅对小白条生效，不会对三大金刚生效
+    abstract public boolean isUIimmerseNavbar();
 
     //传递dialog的Tag
     //Tag每个独立的dialog必须唯一，如果同一个activity里出现重复的Tag会造成复用问题

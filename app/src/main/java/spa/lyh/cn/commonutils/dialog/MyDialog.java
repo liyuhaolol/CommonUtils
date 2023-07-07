@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.FragmentActivity;
-
 import spa.lyh.cn.commonutils.R;
 import spa.lyh.cn.lib_utils.dialog.FullDialog;
 import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
@@ -37,12 +35,17 @@ public class MyDialog extends FullDialog {
 
    @Override
    public int setStatusBarId() {
-      return 0;
+      return R.id.status_bar;
    }
 
    @Override
    public int setNavigationBarId() {
-      return 0;
+      return R.id.nav_bar;
+   }
+
+   @Override
+   public boolean isUIimmerseNavbar() {
+      return true;
    }
 
    @Override

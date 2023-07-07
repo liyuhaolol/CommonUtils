@@ -21,7 +21,7 @@ public class NavBarFontColorControler {
                     );
                     return true;
                 }catch (Exception e){
-                    Log.w("LightModeException","InsetsController is NULL");
+                    Log.w("LightModeException","WindowInsetsController is NULL");
                     return false;
                 }
             }else {
