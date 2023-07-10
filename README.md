@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.5'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.6'
 ```
+
+## 1.4.6更新
+
+- 移除关于`setBackgroundId()`相关的所有逻辑，全部交给`FullDialog`自动处理，逻辑与之前保持一致
 
 ## 1.4.5更新
 

@@ -24,8 +24,6 @@ public class MyDialog extends FullDialog {
 
    private TextView is_immerse;
 
-   private TextView is_back_id;
-
    private TextView is_dialog_style;
 
    @Override
@@ -60,13 +58,6 @@ public class MyDialog extends FullDialog {
       is_immerse = view.findViewById(R.id.is_immerse);
       is_immerse.setText(getYesNo(isUIimmerseNavbar()));
 
-      is_back_id = view.findViewById(R.id.is_back_id);
-      if (setBackgroundId() != 0){
-         is_back_id.setText(getYesNo(true));
-      }else {
-         is_back_id.setText(getYesNo(false));
-      }
-
       is_dialog_style = view.findViewById(R.id.is_dialog_style);
       if (setStyleId() != 0){
          is_dialog_style.setText(getYesNo(true));
@@ -89,11 +80,6 @@ public class MyDialog extends FullDialog {
    @Override
    public int setStyleId() {
       return R.style.CommonDialog;
-   }
-
-   @Override
-   public int setBackgroundId() {
-      return R.id.background;
    }
 
    @Override

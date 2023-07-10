@@ -37,8 +37,6 @@ public abstract class FullDialog extends DialogFragment {
 
     private boolean canCancel = true;
 
-    private View background;
-
     public Dialog dialog;
 
     private View statusBar;
@@ -58,31 +56,28 @@ public abstract class FullDialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        int backgroundId = setBackgroundId();
-        if (backgroundId != 0){
-            background = view.findViewById(backgroundId);
-            background.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (isCancelable()){
-                        //全局允许取消
-                        if (canCancel){
-                            //允许点外面取消
-                            dismiss();
-                        }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isCancelable()){
+                    //全局允许取消
+                    if (canCancel){
+                        //允许点外面取消
+                        dismiss();
                     }
                 }
-            });
-            if (background instanceof ViewGroup){
-                ViewGroup rootGroup = (ViewGroup) background; // 将根布局转换为 ViewGroup 对象
+            }
+        });
+        if (view instanceof ViewGroup){
+            ViewGroup rootGroup = (ViewGroup) view; // 将根布局转换为 ViewGroup 对象
 
-                int childCount = rootGroup.getChildCount(); // 获取根布局子视图的数量
-                for (int i = 0; i < childCount; i++) {
-                    View childView = rootGroup.getChildAt(i); // 获取根布局中的子视图
-                    childView.setClickable(true); //将根目录下的一级布局全家变为可点击状态，避免出现点击事件穿透布局的问题
-                }
+            int childCount = rootGroup.getChildCount(); // 获取根布局子视图的数量
+            for (int i = 0; i < childCount; i++) {
+                View childView = rootGroup.getChildAt(i); // 获取根布局中的子视图
+                childView.setClickable(true); //将根目录下的一级布局全家变为可点击状态，避免出现点击事件穿透布局的问题
             }
         }
+
         int statusBarId = setStatusBarId();
         if (statusBarId != 0){
             statusBar = view.findViewById(statusBarId);
@@ -194,9 +189,6 @@ public abstract class FullDialog extends DialogFragment {
 
     //传递style的id
     abstract public int setStyleId();
-    //传递背景图的id
-    abstract public int setBackgroundId();
-
     //传递状态栏id
     abstract public int setStatusBarId();
     //传递导航栏id
