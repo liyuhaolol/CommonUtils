@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.4'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.5'
 ```
+
+## 1.4.5更新
+
+- `FullDialog`调整背景点击区域响应范围，避免点击到UI内也会响应`setCanceledOnTouchOutside()`的问题
 
 ## 1.4.4更新
 

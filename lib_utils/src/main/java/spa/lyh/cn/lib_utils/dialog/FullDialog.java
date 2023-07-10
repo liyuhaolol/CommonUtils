@@ -2,6 +2,8 @@ package spa.lyh.cn.lib_utils.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -71,6 +73,15 @@ public abstract class FullDialog extends DialogFragment {
                     }
                 }
             });
+            if (background instanceof ViewGroup){
+                ViewGroup rootGroup = (ViewGroup) background; // 将根布局转换为 ViewGroup 对象
+
+                int childCount = rootGroup.getChildCount(); // 获取根布局子视图的数量
+                for (int i = 0; i < childCount; i++) {
+                    View childView = rootGroup.getChildAt(i); // 获取根布局中的子视图
+                    childView.setClickable(true); //将根目录下的一级布局全家变为可点击状态，避免出现点击事件穿透布局的问题
+                }
+            }
         }
         int statusBarId = setStatusBarId();
         if (statusBarId != 0){
