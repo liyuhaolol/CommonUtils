@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.6'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.7'
 ```
+
+## 1.4.7更新
+
+- FullDialog增加isShowing方法
 
 ## 1.4.6更新
 

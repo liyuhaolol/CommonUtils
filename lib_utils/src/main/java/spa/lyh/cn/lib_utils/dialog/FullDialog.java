@@ -186,6 +186,14 @@ public abstract class FullDialog extends DialogFragment {
         return act;
     }
 
+    public boolean isShowing(){
+        if (dialog == null){
+            return false;
+        }else {
+            return dialog.isShowing();
+        }
+    }
+
 
     //传递style的id
     abstract public int setStyleId();
