@@ -117,22 +117,24 @@ public abstract class FullDialog extends DialogFragment {
     }
 
     public void show(){
-        try {
-            if (act != null){
-                fm = act.getSupportFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                if (TextUtils.isEmpty(showTag)){
-                    showTag = setShowTag();//取用户设置的tag
+        if (!isAdded()){
+            try {
+                if (act != null){
+                    fm = act.getSupportFragmentManager();
+                    FragmentTransaction transaction = fm.beginTransaction();
                     if (TextUtils.isEmpty(showTag)){
-                        showTag = makeShowTag();//自动生成一个唯一tag
+                        showTag = setShowTag();//取用户设置的tag
+                        if (TextUtils.isEmpty(showTag)){
+                            showTag = makeShowTag();//自动生成一个唯一tag
+                        }
                     }
+                    super.show(transaction,showTag);
+                }else {
+                    Log.e(TAG,"无法启动Dialog，activity为NULL,请调用setDialogActivity()设置activity");
                 }
-                super.show(transaction,showTag);
-            }else {
-                Log.e(TAG,"无法启动Dialog，activity为NULL,请调用setDialogActivity()设置activity");
+            }catch (Exception e){
+                Log.e(TAG,"无法启动Dialog，应该是传递的activity存在问题");
             }
-        }catch (Exception e){
-            Log.e(TAG,"无法启动Dialog，应该是传递的activity存在问题");
         }
     }
 

@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.7'
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.8'
 ```
+
+## 1.4.8更新
+
+- FullDialog修正快速多次调用show()会造成app崩溃的问题
 
 ## 1.4.7更新
 
