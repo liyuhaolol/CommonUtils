@@ -20,12 +20,12 @@ android {
         }
     }
 
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-            //withJavadocJar()
-        }
-    }
+//    publishing {
+//        singleVariant('release') {
+//            withSourcesJar()
+//            //withJavadocJar()
+//        }
+//    }
     sourceSets {
         main {
             java.srcDirs 'src/main/java'
@@ -62,7 +62,7 @@ afterEvaluate {
     publishing {
         publications{
             release(MavenPublication) {
-                from components.release
+                //from components.release
                 groupId = 'com.github.liyuhaolol'
                 artifactId = 'CommonUtils'
                 version = versions.versionName
