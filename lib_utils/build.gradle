@@ -20,12 +20,11 @@ android {
         }
     }
 
-//    publishing {
-//        singleVariant('release') {
-//            withSourcesJar()
-//            //withJavadocJar()
-//        }
-//    }
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
     sourceSets {
         main {
             java.srcDirs 'src/main/java'
@@ -46,27 +45,29 @@ dependencies {
     implementation "com.google.android.material:material:${versions.design}"
 }
 
-tasks.register('sourcesJar', Jar) {
-    if (project.hasProperty("kotlin")) {
-        from android.sourceSets.main.java.getSrcDirs()
-    } else if (project.hasProperty("android")) {
-        from android.sourceSets.main.java.sourceFiles
-    } else {
-        println project
-        from sourceSets.main.allSource
-    }
-    archiveClassifier = 'sources'
-}
 
-afterEvaluate {
-    publishing {
-        publications{
-            release(MavenPublication) {
-                //from components.release
-                groupId = 'com.github.liyuhaolol'
-                artifactId = 'CommonUtils'
-                version = versions.versionName
-                artifact(sourcesJar)
+//afterEvaluate {
+//    publishing {
+//        publications{
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.liyuhaolol'
+//                artifactId = 'CommonUtils'
+//                version = versions.versionName
+//            }
+//        }
+//    }
+//}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.liyuhaolol'
+            artifactId = 'CommonUtils'
+            version = versions.versionName
+
+            afterEvaluate {
+                from components.release
             }
         }
     }
