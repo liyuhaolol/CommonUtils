@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'spa.lyh.cn.commonutils'
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "spa.lyh.cn.commonutils"
         minSdkVersion 19
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
@@ -26,8 +26,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation project(':lib_utils')
-    //implementation 'com.github.liyuhaolol:CommonUtils:1.2.3'
+    //implementation project(':lib_utils')
+    implementation 'com.github.liyuhaolol:CommonUtils:1.4.8'
     implementation project(':language_english')
     implementation "com.github.liyuhaolol:LanguagePack:1.0.0"
 }

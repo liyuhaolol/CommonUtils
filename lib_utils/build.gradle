@@ -3,12 +3,12 @@ apply plugin: 'maven-publish'
 
 android {
     namespace 'spa.lyh.cn.lib_utils'
-    compileSdkVersion 33
+    compileSdkVersion 34
 
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 33
+        targetSdkVersion 34
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -23,6 +23,13 @@ android {
     publishing {
         singleVariant('release') {
             withSourcesJar()
+            withJavadocJar()
+        }
+    }
+    sourceSets {
+        main {
+            java.srcDirs 'src/main/java'
+            resources.srcDirs 'src/main/res'
         }
     }
     compileOptions {

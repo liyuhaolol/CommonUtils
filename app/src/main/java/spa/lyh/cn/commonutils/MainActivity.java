@@ -17,6 +17,7 @@ import android.view.View;
 
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowInsets;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -102,6 +103,7 @@ public class MainActivity extends ABC {
             }
         });
     }
+
 
     /**
      * ！！！！！这方法没用，就这里复制着而已。
