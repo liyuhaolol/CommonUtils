@@ -3,12 +3,12 @@ apply plugin: 'maven-publish'
 
 android {
     namespace 'spa.lyh.cn.lib_utils'
-    compileSdkVersion 34
+    compileSdk 34
 
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 34
+        minSdk 19
+        targetSdk 34
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -23,7 +23,7 @@ android {
     publishing {
         singleVariant('release') {
             withSourcesJar()
-            withJavadocJar()
+            //withJavadocJar()
         }
     }
     sourceSets {
@@ -36,6 +36,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -43,6 +44,18 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation "com.google.android.material:material:${versions.design}"
+}
+
+tasks.register('sourcesJar', Jar) {
+    if (project.hasProperty("kotlin")) {
+        from android.sourceSets.main.java.getSrcDirs()
+    } else if (project.hasProperty("android")) {
+        from android.sourceSets.main.java.sourceFiles
+    } else {
+        println project
+        from sourceSets.main.allSource
+    }
+    archiveClassifier = 'sources'
 }
 
 afterEvaluate {
@@ -53,6 +66,7 @@ afterEvaluate {
                 groupId = 'com.github.liyuhaolol'
                 artifactId = 'CommonUtils'
                 version = versions.versionName
+                artifact(sourcesJar)
             }
         }
     }
