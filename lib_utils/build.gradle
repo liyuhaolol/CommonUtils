@@ -1,5 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    //id 'signing'
+}
+
 
 android {
     namespace 'spa.lyh.cn.lib_utils'
@@ -23,12 +27,7 @@ android {
     publishing {
         singleVariant('release') {
             withSourcesJar()
-        }
-    }
-    sourceSets {
-        main {
-            java.srcDirs 'src/main/java'
-            resources.srcDirs 'src/main/res'
+            withJavadocJar()
         }
     }
     compileOptions {
@@ -45,30 +44,85 @@ dependencies {
     implementation "com.google.android.material:material:${versions.design}"
 }
 
+var signingKeyId = ""//签名的密钥后8位
+var signingPassword = ""//签名设置的密码
+var secretKeyRingFile = ""//生成的secring.gpg文件目录
+var ossrhUsername = ""//sonatype用户名
+var ossrhPassword = "" //sonatype密码
 
-//afterEvaluate {
-//    publishing {
-//        publications{
-//            release(MavenPublication) {
-//                from components.release
-//                groupId = 'com.github.liyuhaolol'
-//                artifactId = 'CommonUtils'
-//                version = versions.versionName
-//            }
-//        }
-//    }
-//}
+File localProperties = project.rootProject.file("local.properties")
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.github.liyuhaolol'
-            artifactId = 'CommonUtils'
-            version = versions.versionName
+if (localProperties.exists()) {
+    println 'Found secret props file, loading props'
+    Properties properties = new Properties()
 
-            afterEvaluate {
+    localProperties.withInputStream { stream ->
+        properties.load(new InputStreamReader(stream, 'UTF-8'))
+    }
+    signingKeyId = properties.getProperty('signing.keyId')
+    signingPassword = properties.getProperty('signing.password')
+    secretKeyRingFile = properties.getProperty('signing.secretKeyRingFile')
+    ossrhUsername = properties.getProperty('ossrhUsername')
+    ossrhPassword = properties.getProperty('ossrhPassword')
+
+} else {
+    println 'No props file, loading env vars'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
                 from components.release
+                groupId = 'io.github.liyuhaolol'
+                artifactId = 'CommonUtils'
+                version = versions.versionName
+                pom {
+                    name.value("CommonUtils")
+                    description.value("Powerful Utils")
+                    url.value("https://github.com/liyuhaolol/CommonUtils")
+
+                    developers {
+                        developer {
+                            id.value("liyuhao")
+                            name.value("liyuhao")
+                            email.value("liyuhaoid@sina.com")
+                        }
+                    }
+
+                    scm {
+                        connection.value("scm:git@github.com/liyuhaolol/CommonUtils.git")
+                        developerConnection.value("scm:git@github.com/liyuhaolol/CommonUtils.git")
+                        url.value("https://github.com/liyuhaolol/CommonUtils")
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                credentials {
+                    username = ossrhUsername
+                    password = ossrhPassword
+                }
             }
         }
     }
 }
+
+/*gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.allTasks.any { it instanceof Sign }) {
+        allprojects {
+            ext['signing.keyId'] = signingKeyId
+            ext['signing.secretKeyRingFile'] = secretKeyRingFile
+            ext['signing.password'] = signingPassword
+        }
+    }
+}
+
+signing {
+    sign publishing.publications
+}*/
+
+
