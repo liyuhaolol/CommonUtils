@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    //id 'signing'
+    id 'signing'
 }
 
 
@@ -59,9 +59,9 @@ if (localProperties.exists()) {
     localProperties.withInputStream { stream ->
         properties.load(new InputStreamReader(stream, 'UTF-8'))
     }
-    signingKeyId = properties.getProperty('signing.keyId')
-    signingPassword = properties.getProperty('signing.password')
-    secretKeyRingFile = properties.getProperty('signing.secretKeyRingFile')
+    signingKeyId = properties.getProperty('signingKeyId')
+    signingPassword = properties.getProperty('signingPassword')
+    secretKeyRingFile = properties.getProperty('secretKeyRingFile')
     ossrhUsername = properties.getProperty('ossrhUsername')
     ossrhPassword = properties.getProperty('ossrhPassword')
 
@@ -106,12 +106,15 @@ afterEvaluate {
                     username = ossrhUsername
                     password = ossrhPassword
                 }
+/*                authentication {
+                    basic(AuthenticationContainer)
+                }*/
             }
         }
     }
 }
 
-/*gradle.taskGraph.whenReady { taskGraph ->
+gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.allTasks.any { it instanceof Sign }) {
         allprojects {
             ext['signing.keyId'] = signingKeyId
@@ -123,6 +126,6 @@ afterEvaluate {
 
 signing {
     sign publishing.publications
-}*/
+}
 
 

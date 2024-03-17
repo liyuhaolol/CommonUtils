@@ -27,7 +27,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation project(':lib_utils')
-    //implementation 'com.github.liyuhaolol:CommonUtils:1.4.9'
+    //implementation 'io.github.liyuhaolol:CommonUtils:1.5.2'
+    //implementation 'io.github.liyuhaolol:CommonUtils:1.5.2:sources'
     implementation project(':language_english')
     implementation "com.github.liyuhaolol:LanguagePack:1.0.0"
 }
