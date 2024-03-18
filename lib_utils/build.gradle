@@ -101,11 +101,17 @@ afterEvaluate {
 
         repositories {
             maven {
-                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                credentials {
+                name 'CommonUtils'
+                url = 'https://central.sonatype.com/api/v1/publisher/deployments/download/'
+                credentials(HttpHeaderCredentials){
+                    name = ossrhUsername
+                    value = ossrhPassword
+                }
+                authentication {header(HttpHeaderAuthentication)}
+/*                credentials {
                     username = ossrhUsername
                     password = ossrhPassword
-                }
+                }*/
 /*                authentication {
                     basic(AuthenticationContainer)
                 }*/
@@ -127,5 +133,7 @@ gradle.taskGraph.whenReady { taskGraph ->
 signing {
     sign publishing.publications
 }
+
+
 
 
