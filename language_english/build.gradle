@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace 'com.tangyin.mobile.language_english'
     compileSdk 34
 
     defaultConfig {
@@ -22,5 +23,5 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.tangyin.mobile.language_english'
+
 }
