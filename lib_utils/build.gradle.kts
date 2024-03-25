@@ -1,13 +1,12 @@
 import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.util.Properties
+import net.thebugmc.gradle.sonatypepublisher.PublishingType.USER_MANAGED
 
 plugins {
     id("com.android.library")
-    `maven-publish`
-    signing
+    id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
 }
-
 
 android {
     namespace = "spa.lyh.cn.lib_utils"
@@ -26,12 +25,6 @@ android {
         }
     }
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility =  JavaVersion.VERSION_1_8
@@ -70,49 +63,44 @@ if (localProperties.exists()) {
 }
 
 
-afterEvaluate {
-    publishing{
-        publications{
-            register<MavenPublication>("release"){
-                groupId = "io.github.liyuhaolol"
-                artifactId = "CommonUtils"
-                version = findProperty("version.versionName") as String
-                from(components["release"])
-
-                pom{
-                    name.value("CommonUtils")
-                    description.value("Powerful Utils")
-                    url.value("https://github.com/liyuhaolol/CommonUtils")
-
-                    developers {
-                        developer {
-                            id.value("liyuhao")
-                            name.value("liyuhao")
-                            email.value("liyuhaoid@sina.com")
-                        }
-                    }
-
-                    scm {
-                        connection.value("scm:git@github.com/liyuhaolol/CommonUtils.git")
-                        developerConnection.value("scm:git@github.com/liyuhaolol/CommonUtils.git")
-                        url.value("https://github.com/liyuhaolol/CommonUtils")
-                    }
-                }
+centralPortal {
+    username = ossrhUsername
+    password = ossrhPassword
+    name = "CommonUtils"
+    group = "io.github.liyuhaolol"
+    version = findProperty("version.versionName") as String
+    pom {
+        //packaging = "aar"
+        name = "CommonUtils"
+        description = "Powerful Utils"
+        url = "https://github.com/liyuhaolol/CommonUtils"
+        licenses {
+            license {
+                name = "The MIT License"
+                url = "https://github.com/liyuhaolol/CommonUtils/blob/master/LICENSE"
             }
         }
-
-/*        repositories{
-            maven{
-                name = "CommonUtils"
-                url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                credentials {
-                    username = ossrhUsername
-                    password = ossrhPassword
-                }
+        developers {
+            developer {
+                id = "liyuhao"
+                name = "liyuhao"
+                email = "liyuhaoid@sina.com"
             }
-        }*/
+        }
+        scm {
+            connection = "scm:git@github.com/liyuhaolol/CommonUtils.git"
+            developerConnection = "scm:git@github.com/liyuhaolol/CommonUtils.git"
+            url = "https://github.com/liyuhaolol/CommonUtils"
+        }
+
     }
+    publishingType = USER_MANAGED
+    javadocJarTask = tasks.create<Jar>("javadocEmptyJar") {
+        archiveClassifier = "javadoc"
+    }
+
 }
+
 
 gradle.taskGraph.whenReady {
     if (allTasks.any { it is Sign }) {
@@ -128,23 +116,7 @@ signing {
     sign(publishing.publications)
 }
 
-/*tasks.register<Zip>("generateRepo") {
-    val publishTask = tasks.named(
-        "publishReleasePublicationToCommonUtilsRepository",
-        PublishToMavenRepository::class.java)
-    from(publishTask.map { it.repository.url })
-    into("mylibrary")
-    archiveFileName.set("mylibrary.zip")
-}*/
 
-/*tasks.register<Zip>("generateRepo") {
-    val publishTask = tasks.named(
-        "publishToMavenLocal",
-        PublishToMavenLocal::class.java)
-    from(publishTask.map { it.temporaryDir.absolutePath })
-    into("mylibrary")
-    archiveFileName.set("mylibrary.zip")
-}*/
 
 
 
