@@ -27,8 +27,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${findProperty("lib.appcompat")}"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation project(':lib_utils')
-    //implementation 'io.github.liyuhaolol:CommonUtils:1.5.2'
-    //implementation 'io.github.liyuhaolol:CommonUtils:1.5.2:sources'
+    //implementation 'io.github.liyuhaolol:CommonUtils:1.5.3'
     implementation project(':language_english')
-    implementation "com.github.liyuhaolol:LanguagePack:1.0.0"
+    implementation "com.github.liyuhaolol:LanguagePack:1.0.3"
 }

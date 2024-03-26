@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'com.github.liyuhaolol:CommonUtils:1.4.8'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.3'
 ```
+
+## 1.5.3更新
+
+- 由于`jitpack.io`存在无法查看源码的BUG，且长时间未修复。所以废弃该平台，转而将库发布在`mavenCentral`上
 
 ## 1.4.8更新
 
