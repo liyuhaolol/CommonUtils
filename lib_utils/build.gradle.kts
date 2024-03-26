@@ -33,8 +33,8 @@ android {
 }
 
 dependencies {
-    implementation ("androidx.appcompat:appcompat:1.2.0")
-    implementation ("com.google.android.material:material:${findProperty("lib.design")}")
+    implementation ("androidx.appcompat:appcompat:${Lib.appcompat}")
+    implementation ("com.google.android.material:material:${Lib.design}")
 }
 
 var signingKeyId = ""//签名的密钥后8位
@@ -68,7 +68,7 @@ centralPortal {
     password = ossrhPassword
     name = "CommonUtils"
     group = "io.github.liyuhaolol"
-    version = findProperty("version.versionName") as String
+    version = Version.versionName
     pom {
         //packaging = "aar"
         name = "CommonUtils"
