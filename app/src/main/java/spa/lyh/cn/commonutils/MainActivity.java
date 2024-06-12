@@ -41,7 +41,7 @@ import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
 public class MainActivity extends ABC {
 
-    TextView tv_status_bar,tv_nav_bar,tv_status_bar_height,tv_nav_bar_height,tv_android_version;
+    TextView tv_nav_bar,tv_status_bar_height,tv_nav_bar_height,tv_android_version;
     EditText et;
 
     MyDialog myDialog;
@@ -51,7 +51,6 @@ public class MainActivity extends ABC {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_status_bar_height = findViewById(R.id.tv_status_bar_height);
-        tv_status_bar = findViewById(R.id.tv_status_bar);
         tv_nav_bar = findViewById(R.id.tv_nav_bar);
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
         tv_android_version = findViewById(R.id.tv_android_version);
@@ -81,24 +80,14 @@ public class MainActivity extends ABC {
                 tv_nav_bar_height.setText("导航栏高度："+height);
                 switch (navbarType){
                     case BarUtils.NO_NAVIGATION:
-                        tv_nav_bar.setText("没有导航栏");
+                        tv_nav_bar.setText("类型：没有导航栏");
                         break;
                     case BarUtils.NORMAL_NAVIGATION:
-                        tv_nav_bar.setText("普通导航栏");
+                        tv_nav_bar.setText("类型：普通导航栏");
                         break;
                     case BarUtils.GESTURE_NAVIGATION:
-                        tv_nav_bar.setText("小白条");
+                        tv_nav_bar.setText("类型：小白条");
                         break;
-                }
-            }
-        });
-        AppUtils.hasNotch(getWindow(), new NotchListener() {
-            @Override
-            public void onResult(boolean hasNotch) {
-                if (hasNotch){
-                    tv_status_bar.setText("存在刘海(Android10以上判断不准确)");
-                }else {
-                    tv_status_bar.setText("不存在刘海");
                 }
             }
         });
@@ -106,7 +95,8 @@ public class MainActivity extends ABC {
 
 
     /**
-     * ！！！！！这方法没用，就这里复制着而已。
+     * ！！！！！这方法没用了已经。
+     * 本库已经通过Android默认的Api方法判断是否为小白条手势操作等方法。不再需要根据手机具体厂商进行判断
      * 获取主流手机设置中的"navigation_gesture_on"值，判断当前系统是使用导航键还是手势导航操作
      * @param context app Context
      * @return

@@ -177,10 +177,12 @@ public class AppUtils {
     }
 
     /**
-     * 判断是否存在刘海屏等异形屏
+     * 判断是否存在刘海屏等异形屏,Android10以上判断并不准确，挖孔屏厂商不在硬件里注明为Notch，只能得到不是Notch的结果
+     * 具体如何应该是读取状态栏的高度，进行UI的适配。本方法已经失去它原本的作用了，请尽量不要使用。
      * @param window
      * @param listener
      */
+    @Deprecated
     public static void hasNotch (Window window, final NotchListener listener){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
             final View decorView = window.getDecorView();
