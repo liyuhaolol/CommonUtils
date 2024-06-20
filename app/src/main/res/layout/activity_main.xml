@@ -23,6 +23,7 @@
         android:layout_above="@+id/bar_bottom">
 
         <LinearLayout
+            android:id="@+id/center_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -72,6 +73,15 @@
                 android:onClick="onShow"
                 android:text="显示弹窗"/>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/test_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/center_area"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Android15 EdgetoEdge 测试"/>
 
         <EditText
             android:id="@+id/et"

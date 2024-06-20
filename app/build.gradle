@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'spa.lyh.cn.commonutils'
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
         applicationId "spa.lyh.cn.commonutils"
         minSdk 19
-        targetSdk 34
+        targetSdk 35
         versionCode 1
         versionName "1.0"
     }

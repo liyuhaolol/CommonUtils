@@ -23,6 +23,7 @@ public abstract class ASD extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TranslucentUtils.setTranslucentBoth(getWindow());
+        //TranslucentUtils.setTranslucentTOP(getWindow());
         //TranslucentUtils.setTranslucentBottom(getWindow());
         /*Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

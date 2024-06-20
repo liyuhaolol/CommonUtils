@@ -4,6 +4,7 @@ import static android.view.View.NO_ID;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowInsets;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,8 @@ public class MainActivity extends ABC {
 
     MyDialog myDialog;
 
+    Button test_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,14 @@ public class MainActivity extends ABC {
         tv_nav_bar_height = findViewById(R.id.tv_nav_bar_height);
         tv_android_version = findViewById(R.id.tv_android_version);
         tv_android_version.setText("安卓版本号："+Build.VERSION.SDK_INT);
+        test_btn = findViewById(R.id.test_btn);
+        test_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,TestActivity.class);
+                startActivity(intent);
+            }
+        });
         et = findViewById(R.id.et);
         LanguageInfo info = new LanguageInfo();
         info.language="en";
