@@ -1,47 +1,30 @@
 package spa.lyh.cn.commonutils;
 
-import static android.view.View.NO_ID;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 import android.view.View;
 
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import java.lang.reflect.Method;
-
+import spa.lyh.cn.commonutils.base.BaseActivity;
 import spa.lyh.cn.commonutils.dialog.MyDialog;
 import spa.lyh.cn.languagepack.LanguagesPack;
 import spa.lyh.cn.languagepack.model.LanguageInfo;
-import spa.lyh.cn.lib_utils.AppUtils;
 import spa.lyh.cn.lib_utils.PixelUtils;
 import spa.lyh.cn.lib_utils.TextDetailUtils;
 import spa.lyh.cn.lib_utils.TimeUtils;
-import spa.lyh.cn.lib_utils.listener.NotchListener;
 import spa.lyh.cn.lib_utils.ntp.SntpClient;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
 
-public class MainActivity extends ABC {
+public class MainActivity extends BaseActivity {
 
     TextView tv_nav_bar,tv_status_bar_height,tv_nav_bar_height,tv_android_version;
     EditText et;
