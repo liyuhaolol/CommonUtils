@@ -32,8 +32,6 @@ public class TranslucentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_translucent);
         //开启沉浸式
         TranslucentUtils.setTranslucentBoth(getWindow());
-        //TranslucentUtils.setTranslucentTOP(getWindow());
-        //TranslucentUtils.setTranslucentBottom(getWindow());
         initView();
     }
 
