@@ -87,7 +87,12 @@ public class TranslucentActivity extends AppCompatActivity {
 
     public String getContent(){
         return "    通过设置页面translucent，使界面可以显示到状态栏和导航栏下方。在通过上下2个View占位将实现显示内容限制回安全区内。\n" +
-               "    沉浸逻辑支持最小SDK=19，适合项目采用手动translucent然后进行占位适配导航栏状态栏的方案。";
+                "    沉浸逻辑支持最小SDK=19(Android4.4)，适合项目采用手动translucent然后进行占位适配导航栏状态栏的方案。\n\n" +
+                "    该适配方案在>=SDK26(Android8.0)以上是完美适配所有情况的，所以此方案推荐设置项目minSDK=26。\n\n" +
+                "    低版本的UI变化说明：\n" +
+                "    SDK19(Android4.4)---SDK25(Android7.1.1)导航栏会强制添加半透明黑色遮罩。\n" +
+                "    SDK21(Android5.0)---SDK22(Android5.1)状态栏文字无法变为深色。\n" +
+                "    SDK19(Android4.4)状态栏会强制添加半透明黑色遮罩。";
     }
 
 
