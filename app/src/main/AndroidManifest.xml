@@ -19,8 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity"
+        <activity android:name=".example.TranslucentActivity"/>
+        <activity android:name=".example.Edge2EdgeActivity"
             android:theme="@style/TestTheme"/>
+        <activity android:name=".example.DialogActivity"/>
     </application>
 
 </manifest>

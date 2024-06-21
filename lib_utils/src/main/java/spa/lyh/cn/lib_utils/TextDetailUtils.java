@@ -88,7 +88,7 @@ public class TextDetailUtils {
     public static void openKeybord(Activity mActivity) {
         InputMethodManager imm = (InputMethodManager) mActivity
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mActivity.getWindow().getDecorView(), InputMethodManager.RESULT_SHOWN);
+        imm.showSoftInput(mActivity.getWindow().getDecorView(), InputMethodManager.SHOW_FORCED);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
                 InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
@@ -100,7 +100,7 @@ public class TextDetailUtils {
     public static void openKeybord(View view) {
         InputMethodManager imm = (InputMethodManager) view.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(view, InputMethodManager.RESULT_SHOWN);
+        imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
                 InputMethodManager.HIDE_IMPLICIT_ONLY);
     }

@@ -1,11 +1,13 @@
-package spa.lyh.cn.commonutils;
+package spa.lyh.cn.commonutils.example;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TestActivity extends AppCompatActivity {
+import spa.lyh.cn.commonutils.R;
+
+public class Edge2EdgeActivity extends AppCompatActivity {
 
 
     @Override

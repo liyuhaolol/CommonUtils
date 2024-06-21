@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:text="实现App状态栏导航栏沉浸式的新旧2种方式，各自有各自的应用场景。并没有明确的优劣之分。Androi15新方法实现沉浸式相对更简洁高效，按需选择。"
                 android:layout_gravity="center_horizontal"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/btn_1"
@@ -36,97 +37,22 @@
                 android:text="Android15的EdgetoEdge逻辑实现状态栏导航栏沉浸式适配（新）"
                 android:textAllCaps="false"
                 android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="自定义FragmentDialog实现全屏沉浸式的Dialog，系统默认的Dialog是不能轻易简洁的将View拉伸到全屏的，只适合居中显示View。"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="Dialog的范例演示"
+                android:textAllCaps="false"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
     </ScrollView>
-
-    <View
-        android:id="@+id/status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#f0f000" />
-    <View
-        android:id="@+id/bar_top"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#eaeaea"
-        android:layout_marginBottom="16dp"
-        android:layout_below="@+id/status_bar"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/bar_top"
-        android:layout_above="@+id/bar_bottom">
-
-        <LinearLayout
-            android:id="@+id/center_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_android_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_status_bar_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_nav_bar_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/tv_nav_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onOpen"
-                    android:text="打开" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClose"
-                    android:text="关闭" />
-            </LinearLayout>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onShow"
-                android:text="显示弹窗"/>
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/bar_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#eaeaea"
-        android:layout_above="@+id/nav_bar"/>
-    <View
-        android:id="@+id/nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#f0f000"
-        android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>
