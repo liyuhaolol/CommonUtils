@@ -9,7 +9,11 @@
         <item name="android:forceDarkAllowed" >false</item><!--禁止系统自动转色app-->
     </style>
 
-    <style name="TestTheme" parent="AppTheme">
+    <style name="EdgeTheme" parent="AppTheme" tools:ignore="NewApi">
+        <item name="android:statusBarColor">@color/yellow</item>
+        <item name="android:navigationBarColor">@color/yellow</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:enforceNavigationBarContrast" tools:ignore="NewApi">false</item>
     </style>
 
