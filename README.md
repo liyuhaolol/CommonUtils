@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.3'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.4'
 ```
+
+## 1.5.4更新
+
+- 适配Andriod15的沉浸式变动
 
 ## 1.5.3更新
 

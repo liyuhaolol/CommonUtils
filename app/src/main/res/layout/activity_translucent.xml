@@ -3,41 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:paddingBottom="50dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="实现App状态栏导航栏沉浸式的新旧2种方式，各自有各自的应用场景。并没有明确的优劣之分。Androi15新方法实现沉浸式相对更简洁高效，按需选择。"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#000000"/>
-
-            <Button
-                android:id="@+id/btn_1"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:text="Translucent透明模式实现状态栏导航栏沉浸式适配（旧）"
-                android:textAllCaps="false"
-                android:layout_marginTop="10dp"/>
-
-            <Button
-                android:id="@+id/btn_2"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:text="Android15的EdgetoEdge逻辑实现状态栏导航栏沉浸式适配（新）"
-                android:textAllCaps="false"
-                android:layout_marginTop="10dp"/>
-        </LinearLayout>
-    </ScrollView>
 
     <View
         android:id="@+id/status_bar"
@@ -108,6 +73,15 @@
                 android:onClick="onShow"
                 android:text="显示弹窗"/>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/test_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/center_area"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Android15 EdgetoEdge 测试"/>
 
         <EditText
             android:id="@+id/et"
