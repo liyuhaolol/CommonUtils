@@ -5,5 +5,14 @@
     android:background="@color/white"
     android:fitsSystemWindows="true">
 
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </RelativeLayout>
