@@ -8,7 +8,7 @@
         android:id="@+id/status_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/black"/>
+        android:background="@color/light_sky_blue"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="说明：开启以后，小白条导航栏的高度\n           会被强制为0，UI会沉浸显示到小\n           白条下方"/>
+                android:text="说明：开启以后，手势导航条的高度\n           会被强制为0，UI会沉浸显示到小\n           白条下方"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
             android:id="@+id/nav_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/light_yellow"/>
+            android:background="@color/light_salmon"/>
     </LinearLayout>
 
 </RelativeLayout>

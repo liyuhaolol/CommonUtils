@@ -39,9 +39,9 @@ public abstract class FullDialog extends DialogFragment {
 
     public Dialog dialog;
 
-    private View statusBar;
+    public View statusBar;
 
-    private View navBar;
+    public View navBar;
 
     private boolean isImmerse = false;
     @Override
@@ -87,6 +87,7 @@ public abstract class FullDialog extends DialogFragment {
             navBar = view.findViewById(navBarId);
         }
         isImmerse = isUIimmerseNavbar();
+
     }
 
     @Override
@@ -107,7 +108,7 @@ public abstract class FullDialog extends DialogFragment {
                 window.setAttributes(lp);
             }
         }
-        autoFitBarHeight();
+         autoFitBarHeight();
     }
 
     @Override
@@ -195,7 +196,6 @@ public abstract class FullDialog extends DialogFragment {
             return dialog.isShowing();
         }
     }
-
 
     //传递style的id
     abstract public int setStyleId();

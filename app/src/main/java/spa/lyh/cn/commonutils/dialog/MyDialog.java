@@ -39,8 +39,7 @@ public class MyDialog extends FullDialog {
       status_bar_color = view.findViewById(R.id.status_bar_color);
       if (setStatusBarId() != 0){
          is_status_bar.setText(getYesNo(true));
-         View statusBar = view.findViewById(setStatusBarId());
-         status_bar_color.setBackground(statusBar.getBackground());
+         status_bar_color.setBackground(getContext().getResources().getDrawable(R.color.light_sky_blue));
       }else {
          is_status_bar.setText(getYesNo(false));
       }
@@ -49,8 +48,7 @@ public class MyDialog extends FullDialog {
       nav_bar_color = view.findViewById(R.id.nav_bar_color);
       if (setNavigationBarId() != 0){
          is_nav_bar.setText(getYesNo(true));
-         View navBar = view.findViewById(setNavigationBarId());
-         nav_bar_color.setBackground(navBar.getBackground());
+         nav_bar_color.setBackground(getContext().getResources().getDrawable(R.color.light_salmon));
       }else {
          is_nav_bar.setText(getYesNo(false));
       }
@@ -69,34 +67,40 @@ public class MyDialog extends FullDialog {
    @Override
    public void onResume() {
       super.onResume();
-      StatusBarFontColorControler.setStatusBarMode(window,false);//状态栏文字颜色为白色
+      StatusBarFontColorControler.setStatusBarMode(window,true);//状态栏文字颜色为白色
       NavBarFontColorControler.setNavBarMode(window,true);//导航栏文字颜色为黑色
    }
+
 
    private String getYesNo(boolean isYes){
       return isYes?"是":"否";
    }
 
+   //设置dialog样式
    @Override
    public int setStyleId() {
       return R.style.CommonDialog;
    }
 
+   //设置状态栏ResId
    @Override
    public int setStatusBarId() {
       return R.id.status_bar;
    }
 
+   //设置导航栏ResId
    @Override
    public int setNavigationBarId() {
       return R.id.nav_bar;
    }
 
+   //是否启用导航栏沉浸
    @Override
    public boolean isUIimmerseNavbar() {
       return false;
    }
 
+   //设置dialog的showtag
    @Override
    public String setShowTag() {
       return "MyDialog";
