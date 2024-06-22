@@ -9,12 +9,11 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import spa.lyh.cn.commonutils.example.DialogActivity;
-import spa.lyh.cn.commonutils.example.Edge2EdgeActivity;
 import spa.lyh.cn.commonutils.example.TranslucentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_1,btn_2,btn_3;
+    Button btn_1,btn_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +29,6 @@ public class MainActivity extends AppCompatActivity {
         });
         btn_2 = findViewById(R.id.btn_2);
         btn_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Edge2EdgeActivity.class);
-                startActivity(intent);
-            }
-        });
-        btn_3 = findViewById(R.id.btn_3);
-        btn_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DialogActivity.class);

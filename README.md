@@ -6,8 +6,13 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.4'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.5'
 ```
+
+## 1.5.5更新
+
+- 增加`window.setStatusBarContrastEnforced(false);`似乎Android没有启用这个代码逻辑，但是为了避免某些系统出现偶发问题，统一加上。
+- 修改了弹出键盘的默认参数
 
 ## 1.5.4更新
 

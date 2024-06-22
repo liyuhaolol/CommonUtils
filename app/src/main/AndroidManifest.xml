@@ -20,8 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".example.TranslucentActivity"/>
-        <activity android:name=".example.Edge2EdgeActivity"
-            android:theme="@style/EdgeTheme"/>
         <activity android:name=".example.DialogActivity"/>
     </application>
 
