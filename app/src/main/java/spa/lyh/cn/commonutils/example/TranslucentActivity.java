@@ -90,7 +90,8 @@ public class TranslucentActivity extends AppCompatActivity {
                 "    低版本的UI变化说明：\n" +
                 "    SDK19(Android4.4)---SDK25(Android7.1.1)导航栏会强制添加半透明黑色遮罩。\n" +
                 "    SDK21(Android5.0)---SDK22(Android5.1)状态栏文字无法变为深色。\n" +
-                "    SDK19(Android4.4)状态栏会强制添加半透明黑色遮罩。";
+                "    SDK19(Android4.4)状态栏会强制添加半透明黑色遮罩。\n\n" +
+                "    重要提示：本页面只是展示一种纯代码完成对应逻辑的例子，不代表你只能这么做。你完全可以通过fitsSystemWindows属性和themes达到完全一致的效果。";
     }
 
 
