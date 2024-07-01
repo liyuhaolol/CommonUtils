@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -16,7 +17,7 @@
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="实现App状态栏导航栏沉浸式的范例，适用于非compose的老项目。"
+                android:text="使用布局属性fitsSystemWindows实现最简单的上下沉浸式适配"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/black"/>
 
@@ -25,13 +26,13 @@
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:text="Translucent透明模式实现状态栏导航栏沉浸式适配"
+                android:text="实现方法"
                 android:textAllCaps="false"
                 android:layout_marginTop="10dp"/>
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="自定义FragmentDialog实现全屏沉浸式的Dialog，系统默认的Dialog是不能轻易简洁的将View拉伸到全屏的，只适合居中显示View。"
+                android:text="使用自定义Layout来实现仅有一侧View需要显示到状态栏、导航栏。亦或者横屏下显示到摄像头下方的沉浸式适范例。\n由于fitsSystemWindows是无脑全部适配或全部不适配，没法针对某一侧单独设置。故自定义Layout来实现相应布局需求。\n本例子仅演示View显示到导航栏下方的例子。"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
@@ -41,14 +42,14 @@
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:text="Dialog的范例演示"
+                android:text="实现方法"
                 android:textAllCaps="false"
                 android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="不使用Java(Kotlin)代码，通过主题和自定义布局来实现activity和dialog的沉浸式简单例子。\n为达到最佳效果本方案推荐minSDK=27(Android8.1)\n低版本安卓显示情况如上面的例子所述，这里不再赘述。"
+                android:text="不使用Java(Kotlin)代码，通过主题和自定义布局来实现activity和dialog的沉浸式简单例子"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
@@ -63,4 +64,4 @@
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

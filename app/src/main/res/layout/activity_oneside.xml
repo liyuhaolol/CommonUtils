@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spa.lyh.cn.lib_utils.view.layout.FitRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/yellow"
+    app:rlFitTop="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:text="基本日常使用的Layout均有一个适配本方案的Layout的替代，对应Layout前面加Fit关键字就可以找到。\n使用fitTop。。。等属性设置页面内子布局单方向的safeArea的Padding"/>
+    </RelativeLayout>
+</spa.lyh.cn.lib_utils.view.layout.FitRelativeLayout>

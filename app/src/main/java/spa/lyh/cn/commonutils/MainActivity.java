@@ -13,7 +13,7 @@ import spa.lyh.cn.commonutils.example.TranslucentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_1,btn_2;
+    Button btn_1,btn_2,btn_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_3 = findViewById(R.id.btn_3);
+        btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });

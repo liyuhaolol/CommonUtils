@@ -21,6 +21,11 @@
         </activity>
         <activity android:name=".example.TranslucentActivity"/>
         <activity android:name=".example.DialogActivity"/>
+        <activity android:name=".SecondActivity"/>
+        <activity android:name=".example.second.EasyActivity"
+            android:theme="@style/SecondTheme"/>
+        <activity android:name=".example.second.OnesideActivity"
+            android:theme="@style/SecondTheme"/>
     </application>
 
 </manifest>

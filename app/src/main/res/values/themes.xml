@@ -9,6 +9,11 @@
         <item name="android:forceDarkAllowed" >false</item><!--禁止系统自动转色app-->
     </style>
 
+    <style name="SecondTheme" parent="AppTheme" tools:ignore="NewApi">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
     <style name="CommonDialog" parent="Theme.AppCompat.DayNight.Dialog" tools:ignore="NewApi">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimAmount">0.5</item>

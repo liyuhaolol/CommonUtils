@@ -17,13 +17,13 @@ open class FitFrameLayout @JvmOverloads constructor(
     init {
         val ta = if (attrs == null) null else getContext().obtainStyledAttributes(
             attrs,
-            R.styleable.Layout
+            R.styleable.FitFrameLayout
         )
         if(ta != null){
-            fitLeft = ta.getBoolean(R.styleable.Layout_lyhFitLeft, false)
-            fitRight = ta.getBoolean(R.styleable.Layout_lyhFitRight, false)
-            fitTop = ta.getBoolean(R.styleable.Layout_lyhFitTop, false)
-            fitBottom = ta.getBoolean(R.styleable.Layout_lyhFitBottom, false)
+            fitLeft = ta.getBoolean(R.styleable.FitFrameLayout_flFitLeft, false)
+            fitRight = ta.getBoolean(R.styleable.FitFrameLayout_flFitRight, false)
+            fitTop = ta.getBoolean(R.styleable.FitFrameLayout_flFitTop, false)
+            fitBottom = ta.getBoolean(R.styleable.FitFrameLayout_flFitBottom, false)
         }
     }
 

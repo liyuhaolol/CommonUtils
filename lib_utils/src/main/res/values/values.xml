@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="Layout">
-        <attr format="boolean" name="lyhFitLeft"/>
-        <attr format="boolean" name="lyhFitRight"/>
-        <attr format="boolean" name="lyhFitTop"/>
-        <attr format="boolean" name="lyhFitBottom"/>
+    <declare-styleable name="FitAbsoluteLayout">
+        <attr format="boolean" name="alFitLeft"/>
+        <attr format="boolean" name="alFitRight"/>
+        <attr format="boolean" name="alFitTop"/>
+        <attr format="boolean" name="alFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitConstraintLayout">
+        <attr format="boolean" name="clFitLeft"/>
+        <attr format="boolean" name="clFitRight"/>
+        <attr format="boolean" name="clFitTop"/>
+        <attr format="boolean" name="clFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitDrawerLayout">
+        <attr format="boolean" name="dlFitLeft"/>
+        <attr format="boolean" name="dlFitRight"/>
+        <attr format="boolean" name="dlFitTop"/>
+        <attr format="boolean" name="dlFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitFrameLayout">
+        <attr format="boolean" name="flFitLeft"/>
+        <attr format="boolean" name="flFitRight"/>
+        <attr format="boolean" name="flFitTop"/>
+        <attr format="boolean" name="flFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitGridLayout">
+        <attr format="boolean" name="glFitLeft"/>
+        <attr format="boolean" name="glFitRight"/>
+        <attr format="boolean" name="glFitTop"/>
+        <attr format="boolean" name="glFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitLinearLayout">
+        <attr format="boolean" name="llFitLeft"/>
+        <attr format="boolean" name="llFitRight"/>
+        <attr format="boolean" name="llFitTop"/>
+        <attr format="boolean" name="llFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitMotionLayout">
+        <attr format="boolean" name="mlFitLeft"/>
+        <attr format="boolean" name="mlFitRight"/>
+        <attr format="boolean" name="mlFitTop"/>
+        <attr format="boolean" name="mlFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitRelativeLayout">
+        <attr format="boolean" name="rlFitLeft"/>
+        <attr format="boolean" name="rlFitRight"/>
+        <attr format="boolean" name="rlFitTop"/>
+        <attr format="boolean" name="rlFitBottom"/>
+    </declare-styleable>
+    <declare-styleable name="FitTableLayout">
+        <attr format="boolean" name="tlFitLeft"/>
+        <attr format="boolean" name="tlFitRight"/>
+        <attr format="boolean" name="tlFitTop"/>
+        <attr format="boolean" name="tlFitBottom"/>
     </declare-styleable>
 </resources>
