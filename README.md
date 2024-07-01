@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.5'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.6'
 ```
+
+## 1.5.6更新
+
+- 增加多个layout，可以在布局里完成单边沉浸式样式
 
 ## 1.5.5更新
 

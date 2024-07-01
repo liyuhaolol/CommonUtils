@@ -5,6 +5,7 @@ import net.thebugmc.gradle.sonatypepublisher.PublishingType.AUTOMATIC
 
 plugins {
     id("com.android.library")
+    id("org.jetbrains.kotlin.android")
     id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
 }
 
@@ -29,12 +30,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility =  JavaVersion.VERSION_1_8
     }
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
     implementation ("androidx.appcompat:appcompat:${Lib.appcompat}")
     implementation ("com.google.android.material:material:${Lib.design}")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 }
 
 var signingKeyId = ""//签名的密钥后8位
