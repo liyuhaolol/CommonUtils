@@ -57,7 +57,7 @@ public class TranslucentActivity extends AppCompatActivity {
                         tv_nav_bar.setText("类型：普通导航栏");
                         break;
                     case BarUtils.GESTURE_NAVIGATION:
-                        tv_nav_bar.setText("类型：手势控制条");
+                        tv_nav_bar.setText("类型：手势提示线");
                         break;
                 }
 

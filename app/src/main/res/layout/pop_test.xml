@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="说明：开启以后，手势导航条的高度\n           会被强制为0，UI会沉浸显示到小\n           白条下方"/>
+                android:text="说明：开启以后，手势提示线的高度\n           会被强制为0，UI会沉浸显示到小\n           白条下方"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
