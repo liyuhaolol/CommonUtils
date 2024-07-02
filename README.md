@@ -6,8 +6,13 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.6'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.7'
 ```
+
+## 1.5.7更新
+
+- 修正多个layout不能调用属性的问题
+- `FullDialog`添加默认初始化activity的构造方法
 
 ## 1.5.6更新
 

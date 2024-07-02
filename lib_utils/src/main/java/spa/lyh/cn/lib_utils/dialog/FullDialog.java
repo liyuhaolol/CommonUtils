@@ -1,9 +1,6 @@
 package spa.lyh.cn.lib_utils.dialog;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,9 +21,13 @@ import androidx.fragment.app.FragmentTransaction;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
-import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
 
 public abstract class FullDialog extends DialogFragment {
+
+    public FullDialog(){}
+    public FullDialog(FragmentActivity activity){
+        this.act = activity;
+    }
     public final static String TAG = "FullDialog";
     private FragmentActivity act = null;
     private FragmentManager fm = null;

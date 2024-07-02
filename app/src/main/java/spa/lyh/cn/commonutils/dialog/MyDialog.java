@@ -94,7 +94,7 @@ public class MyDialog extends FullDialog {
       return R.id.nav_bar;
    }
 
-   //是否启用导航栏沉浸
+   //是否启用三大金刚键导航栏沉浸
    @Override
    public boolean isUIimmerseNavbar() {
       return false;

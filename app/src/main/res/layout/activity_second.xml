@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="不使用Java(Kotlin)代码，通过主题和自定义布局来实现activity和dialog的沉浸式简单例子"
+                android:text="dialog使用主题和属性完成状态栏沉浸演示。"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
@@ -59,7 +59,7 @@
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:text="转跳新页面"
+                android:text="转跳dialog页面"
                 android:textAllCaps="false"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>

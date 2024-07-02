@@ -26,6 +26,7 @@
             android:theme="@style/SecondTheme"/>
         <activity android:name=".example.second.OnesideActivity"
             android:theme="@style/SecondTheme"/>
+        <activity android:name=".example.second.NewDialogActivity"/>
     </application>
 
 </manifest>

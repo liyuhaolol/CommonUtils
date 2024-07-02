@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import spa.lyh.cn.commonutils.databinding.ActivitySecondBinding
 import spa.lyh.cn.commonutils.example.second.EasyActivity
+import spa.lyh.cn.commonutils.example.second.NewDialogActivity
 import spa.lyh.cn.commonutils.example.second.OnesideActivity
 
 class SecondActivity:AppCompatActivity() {
@@ -21,6 +22,10 @@ class SecondActivity:AppCompatActivity() {
         }
         b.btn2.setOnClickListener {
             val intent = Intent(this@SecondActivity,OnesideActivity::class.java)
+            startActivity(intent)
+        }
+        b.btn3.setOnClickListener {
+            val intent = Intent(this@SecondActivity,NewDialogActivity::class.java)
             startActivity(intent)
         }
     }
