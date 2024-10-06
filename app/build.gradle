@@ -38,4 +38,5 @@ dependencies {
     //implementation 'io.github.liyuhaolol:CommonUtils:1.5.3'
     implementation project(':language_english')
     implementation "com.github.liyuhaolol:LanguagePack:1.0.3"
+    implementation "io.github.liyuhaolol:CountDownTimerX:1.0.5"
 }
