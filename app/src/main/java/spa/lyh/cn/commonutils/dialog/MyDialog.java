@@ -79,7 +79,7 @@ public class MyDialog extends FullDialog {
    //设置dialog样式
    @Override
    public int setStyleId() {
-      return R.style.CommonDialog;
+      return 0;
    }
 
    //设置状态栏ResId
@@ -104,5 +104,10 @@ public class MyDialog extends FullDialog {
    @Override
    public String setShowTag() {
       return "MyDialog";
+   }
+
+   @Override
+   public int setWindowAnimationsThemesId() {
+      return 0;
    }
 }

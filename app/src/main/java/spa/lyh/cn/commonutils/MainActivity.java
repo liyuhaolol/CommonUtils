@@ -9,7 +9,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import spa.lyh.cn.commonutils.example.DialogActivity;
-import spa.lyh.cn.commonutils.example.TranslucentActivity;
+import spa.lyh.cn.commonutils.example.Edge2EdgeActivity;
+import spa.lyh.cn.lib_utils.translucent.Edge2Edge;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, TranslucentActivity.class);
+                Intent intent = new Intent(MainActivity.this, Edge2EdgeActivity.class);
                 startActivity(intent);
             }
         });

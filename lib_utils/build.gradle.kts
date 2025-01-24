@@ -15,7 +15,7 @@ android {
 
 
     defaultConfig {
-        minSdk = 19
+        minSdk = 21
 
     }
 
@@ -27,18 +27,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility =  JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility =  JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "21"
     }
 }
 
 dependencies {
     implementation ("androidx.appcompat:appcompat:${Lib.appcompat}")
+    api ("androidx.activity:activity-ktx:${Lib.activity}")
     implementation ("com.google.android.material:material:${Lib.design}")
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.constraintlayout:constraintlayout:2.2.0")
 }
 
 var signingKeyId = ""//签名的密钥后8位

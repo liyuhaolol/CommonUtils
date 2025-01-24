@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".example.TranslucentActivity"/>
+        <activity android:name=".example.Edge2EdgeActivity"/>
         <activity android:name=".example.DialogActivity"/>
         <activity android:name=".SecondActivity"/>
         <activity android:name=".example.second.EasyActivity"

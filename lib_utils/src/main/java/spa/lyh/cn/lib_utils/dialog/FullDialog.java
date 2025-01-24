@@ -1,6 +1,9 @@
 package spa.lyh.cn.lib_utils.dialog;
 
+import static spa.lyh.cn.lib_utils.AppUtils.setSystemUiVisibility;
+
 import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 import spa.lyh.cn.lib_utils.translucent.listener.OnNavHeightListener;
+import spa.lyh.cn.lib_utils.R;
 
 public abstract class FullDialog extends DialogFragment {
 
@@ -51,6 +55,8 @@ public abstract class FullDialog extends DialogFragment {
         int styleId = setStyleId();
         if (styleId != 0){
             setStyle(STYLE_NO_TITLE,styleId);
+        }else {
+            setStyle(STYLE_NO_TITLE,R.style.FullDialog_Style);
         }
     }
 
@@ -99,14 +105,12 @@ public abstract class FullDialog extends DialogFragment {
             dialog.setCanceledOnTouchOutside(canCancel);
             window = dialog.getWindow();
             if (window != null){
+                if (setWindowAnimationsThemesId() != 0){
+                    window.setWindowAnimations(setWindowAnimationsThemesId());
+                }
                 window.setGravity(Gravity.TOP);
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 TranslucentUtils.setTranslucentBoth(window);
-                WindowManager.LayoutParams lp = window.getAttributes();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
-                    lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-                }
-                window.setAttributes(lp);
             }
         }
          autoFitBarHeight();
@@ -212,4 +216,7 @@ public abstract class FullDialog extends DialogFragment {
     //Tag每个独立的dialog必须唯一，如果同一个activity里出现重复的Tag会造成复用问题
     //如果不写会使用时间戳作为tag
     abstract public String setShowTag();
+
+    //传递Dialog的动画
+    abstract public int setWindowAnimationsThemesId();
 }
