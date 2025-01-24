@@ -23,9 +23,9 @@
   - 安卓8.0时，themes.xml中不能控制导航栏的功能键深浅色转，必须在代码中设置导航栏的功能键色转。
   - 安卓8.0到安卓11，冷启动如果想避免显示theme.xml里默认的状态栏和导航栏颜色，则必须在theme.xml中把这些颜色设置为透明。
   - 安卓8.0到安卓14，想要设置沉浸式，需要使用`EdgetoEdge`的api来实现。本库封装方法为`Edge2Edge.enable()`
-- 所以如果你的项目`minSdk=35`也就是最低版本时安卓15，则你不需要`EdgetoEdge`类来显示沉浸式。因为安卓15默认强制启用沉浸式。
-- 加入`Edge2Edge.enable()`方法来替换此前的沉浸式启用方法。
-- 保留`TransluncentUtils`类，此类用来给`Dialog`实现沉浸式，不再支持给`Activity`实现沉浸式，`Activity`请参考上条。
+- 所以如果你的项目`minSdk=35`也就是最低版本是安卓15，则你不需要`EdgetoEdge`类来实现沉浸式。因为安卓15默认强制启用沉浸式，不要写任何代码或添加任何配置。
+- 加入`Edge2Edge.enable()`方法来替换此前的`TranslucentUtils`类的沉浸式启用方法。
+- 保留旧的`TranslucentUtils`类，删除GooglePlay禁止使用的Api，并且进行少量适配修改。确保此类用来给`Dialog`实现沉浸式，不再支持给`Activity`实现沉浸式，`Activity`沉浸式请参考上条。
 
 ## 1.5.7更新
 
