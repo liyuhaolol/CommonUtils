@@ -11,7 +11,7 @@
 ## 1.5.8更新
 
 - 修正FitLayout的Padding属性不生效的问题
-- ！！重要！！根据GooglePlay商店上架要求不再允许在代码中使用`android.view.Window.setStatusBarColor``android.view.Window.setNavigationBarColor``android.view.Window.setNavigationBarDividerColor``LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`等代码设置属性实现沉浸式
+- ！！重要！！根据GooglePlay商店上架要求不再允许在代码中使用`android.view.Window.setStatusBarColor` `android.view.Window.setNavigationBarColor` `android.view.Window.setNavigationBarDividerColor` `LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`等代码设置属性实现沉浸式
 - 全面使用安卓15的新API`EdgetoEdge`来实现沉浸式，避免出现被GooglePlay下架的问题。
 - 暂时保留使用themes.xml中配置文件设置状态栏和导航栏颜色的设置。因为Android12以下的设备，如果不通过xml进行配置。冷启动启动页会有状态栏和导航栏的占位色，影响沉浸式的实现。
   - 如果后续发现GooglePlay也不允许使用theme.xml来设置。则会在范例里去除。
