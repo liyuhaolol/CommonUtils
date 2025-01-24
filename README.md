@@ -6,8 +6,26 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.7'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.8'
 ```
+## 1.5.8更新
+
+- 修正FitLayout的Padding属性不生效的问题
+- ！！重要！！根据GooglePlay商店上架要求不再允许在代码中使用`android.view.Window.setStatusBarColor``android.view.Window.setNavigationBarColor``android.view.Window.setNavigationBarDividerColor``LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`等代码设置属性实现沉浸式
+- 全面使用安卓15的新API`EdgetoEdge`来实现沉浸式，避免出现被GooglePlay下架的问题。
+- 暂时保留使用themes.xml中配置文件设置状态栏和导航栏颜色的设置。因为Android12以下的设备，如果不通过xml进行配置。冷启动启动页会有状态栏和导航栏的占位色，影响沉浸式的实现。
+  - 如果后续发现GooglePlay也不允许使用theme.xml来设置。则会在范例里去除。
+- 本项目推荐`minSdk=26`安卓8.0来进行开发。因为低于这个版本沉浸式的实现UI上多多少少都会有不完美的地方。
+  - 安卓5.0，安卓5.1状态栏导航栏会有阴影，状态栏文字和导航栏功能键不能进行深浅色转。
+  - 安卓6.0，安卓7.0，安卓7.1.1导航栏功能键不能进行深浅色转。
+  - 以上问题均会导致UI与设计预想不符或者影响使用，不推荐在兼容这些版本。
+- 假设在`minSdk=26`时，沉浸式适配依然存在一些需要注意的地方
+  - 安卓8.0时，themes.xml中不能控制导航栏的功能键深浅色转，必须在代码中设置导航栏的功能键色转。
+  - 安卓8.0到安卓11，冷启动如果想避免显示theme.xml里默认的状态栏和导航栏颜色，则必须在theme.xml中把这些颜色设置为透明。
+  - 安卓8.0到安卓14，想要设置沉浸式，需要使用`EdgetoEdge`的api来实现。本库封装方法为`Edge2Edge.enable()`
+- 所以如果你的项目`minSdk=35`也就是最低版本时安卓15，则你不需要`EdgetoEdge`类来显示沉浸式。因为安卓15默认强制启用沉浸式。
+- 加入`Edge2Edge.enable()`方法来替换此前的沉浸式启用方法。
+- 保留`TransluncentUtils`类，此类用来给`Dialog`实现沉浸式，不再支持给`Activity`实现沉浸式，`Activity`请参考上条。
 
 ## 1.5.7更新
 
