@@ -6,8 +6,13 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.8'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.5.9'
 ```
+
+## 1.5.9更新
+
+- 修正FitLayout会无限叠加padding的问题
+
 ## 1.5.8更新
 
 - 修正FitLayout的Padding属性不生效的问题
