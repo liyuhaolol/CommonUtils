@@ -13,6 +13,10 @@ open class FitAbsoluteLayout @JvmOverloads constructor(
     var fitRight:Boolean = false
     var fitTop:Boolean = false
     var fitBottom:Boolean = false
+    var mPaddingTop:Int = 0
+    var mPaddingBottom:Int = 0
+    var mPaddingLeft:Int = 0
+    var mPaddingRight:Int = 0
 
     init {
         val ta = if (attrs == null) null else getContext().obtainStyledAttributes(
@@ -20,10 +24,49 @@ open class FitAbsoluteLayout @JvmOverloads constructor(
             R.styleable.FitAbsoluteLayout
         )
         if(ta != null){
-            fitLeft = ta.getBoolean(R.styleable.FitAbsoluteLayout_alFitLeft, false)
-            fitRight = ta.getBoolean(R.styleable.FitAbsoluteLayout_alFitRight, false)
-            fitTop = ta.getBoolean(R.styleable.FitAbsoluteLayout_alFitTop, false)
-            fitBottom = ta.getBoolean(R.styleable.FitAbsoluteLayout_alFitBottom, false)
+            fitLeft = ta.getBoolean(R.styleable.FitAbsoluteLayout_fitLeft, false)
+            fitRight = ta.getBoolean(R.styleable.FitAbsoluteLayout_fitRight, false)
+            fitTop = ta.getBoolean(R.styleable.FitAbsoluteLayout_fitTop, false)
+            fitBottom = ta.getBoolean(R.styleable.FitAbsoluteLayout_fitBottom, false)
+            mPaddingTop = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingTop,0)
+            mPaddingBottom = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingBottom,0)
+            mPaddingLeft = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingLeft,0)
+            mPaddingRight = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingRight,0)
+            val mPaddingStart = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingStart,0)
+            val mPaddingEnd = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingEnd,0)
+            if (layoutDirection == LAYOUT_DIRECTION_RTL){
+                if (mPaddingStart > 0){
+                    mPaddingRight = mPaddingStart
+                }
+                if (mPaddingEnd > 0){
+                    mPaddingLeft = mPaddingEnd
+                }
+            }else{
+                if (mPaddingStart > 0){
+                    mPaddingLeft = mPaddingStart
+                }
+                if (mPaddingEnd > 0){
+                    mPaddingRight = mPaddingEnd
+                }
+            }
+            val mPaddingHorizontal = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingHorizontal,0)
+            if (mPaddingHorizontal > 0){
+                mPaddingLeft = mPaddingHorizontal
+                mPaddingRight = mPaddingHorizontal
+            }
+            val mPaddingVertical = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_paddingVertical,0)
+            if (mPaddingVertical > 0){
+                mPaddingTop = mPaddingVertical
+                mPaddingBottom = mPaddingVertical
+            }
+            val mPadding = ta.getDimensionPixelSize(R.styleable.FitAbsoluteLayout_padding,0)
+            if (mPadding > 0){
+                mPaddingTop = mPadding
+                mPaddingBottom = mPadding
+                mPaddingLeft = mPadding
+                mPaddingRight = mPadding
+            }
+            setPadding(mPaddingLeft,mPaddingTop,mPaddingRight,mPaddingBottom)
         }
     }
 
@@ -32,9 +75,9 @@ open class FitAbsoluteLayout @JvmOverloads constructor(
     override fun fitSystemWindows(insets: Rect): Boolean {
         if (fitsSystemWindows){
             //系统为true则强制按照系统的要求走
-            setPadding(insets.left+paddingLeft, insets.top+paddingTop, insets.right+paddingRight, insets.bottom+paddingBottom)
+            setPadding(insets.left+mPaddingLeft, insets.top+mPaddingTop, insets.right+mPaddingRight, insets.bottom+mPaddingBottom)
         }else{
-            setPadding(if(fitLeft){insets.left+paddingLeft} else paddingLeft, if(fitTop){insets.top+paddingTop} else paddingTop,if(fitRight){insets.right+paddingRight} else paddingRight, if(fitBottom){insets.bottom+paddingBottom} else paddingBottom)
+            setPadding(if(fitLeft){insets.left+mPaddingLeft} else mPaddingLeft, if(fitTop){insets.top+mPaddingTop} else mPaddingTop,if(fitRight){insets.right+mPaddingRight} else mPaddingRight, if(fitBottom){insets.bottom+mPaddingBottom} else mPaddingBottom)
         }
         //返回false不阻止子布局的fitsSystemWindows属性生效
         return false
