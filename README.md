@@ -6,8 +6,12 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.5.9'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.6.0'
 ```
+
+## 1.6.0更新
+
+- 修改ntp服务器的地址
 
 ## 1.5.9更新
 

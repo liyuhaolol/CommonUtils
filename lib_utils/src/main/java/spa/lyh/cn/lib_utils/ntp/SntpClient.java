@@ -256,7 +256,7 @@ public class SntpClient {
     private Context context;
 
     private static String[] ntpServers = new String[]{
-            "cn.ntp.org.cn"
+            "ntp.ntsc.ac.cn"
             ,"pool.ntp.org"
             ,"ntp.aliyun.com"
             ,"ntp.tencent.com"
