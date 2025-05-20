@@ -6,8 +6,11 @@
 
 - 在gradle中:
 ```gradle
-    implementation 'io.github.liyuhaolol:CommonUtils:1.6.0'
+    implementation 'io.github.liyuhaolol:CommonUtils:1.6.1'
 ```
+## 1.6.1更新
+
+- 允许ntp广播
 
 ## 1.6.0更新
 
