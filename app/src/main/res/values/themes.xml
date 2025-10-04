@@ -22,8 +22,8 @@
     </style>
 
     <style name="SecondTheme" parent="AppTheme" tools:ignore="NewApi">
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">false</item><!--此处为错误演示，xml文件已经无法控制EdgetoEdge状态下的文字颜色，所以设置白色无效-->
+        <item name="android:windowLightNavigationBar">false</item><!--此处为错误演示，xml文件已经无法控制EdgetoEdge状态下的文字颜色，所以设置白色无效-->
     </style>
 
     <style name="CommonDialog" parent="Theme.AppCompat.DayNight.Dialog" tools:ignore="NewApi">
